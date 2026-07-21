@@ -1,17 +1,13 @@
-import { Compass, HardHat, FileText, Settings } from "lucide-react";
+import { Compass, HardHat, FileText, Settings, Plus, Minus } from "lucide-react";
+import { useState } from "react";
 import Layout from "@/components/Layout";
-import SectionHeading from "@/components/SectionHeading";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 
 const services = [
   {
+    num: "01",
     icon: Compass,
     title: "Detailed Design Engineering",
+    tagline: "Precision structural design from concept to construction.",
     items: [
       "Structural design for bridges, flyovers, and elevated corridors",
       "Highway geometric design as per IRC/MoRTH standards",
@@ -22,8 +18,10 @@ const services = [
     ],
   },
   {
+    num: "02",
     icon: HardHat,
     title: "Geotechnical Investigations",
+    tagline: "Subsurface intelligence for confident foundations.",
     items: [
       "Subsurface exploration and borehole logging",
       "In-situ and laboratory soil testing",
@@ -34,8 +32,10 @@ const services = [
     ],
   },
   {
+    num: "03",
     icon: FileText,
     title: "Detailed Project Reports (DPR)",
+    tagline: "Compliance-ready reports that get projects funded.",
     items: [
       "Feasibility studies and route alignment optimization",
       "Traffic surveys and demand forecasting",
@@ -46,8 +46,10 @@ const services = [
     ],
   },
   {
+    num: "04",
     icon: Settings,
     title: "Support Services",
+    tagline: "End-to-end oversight through delivery.",
     items: [
       "Quality assurance and quality control (QA/QC)",
       "Construction supervision and monitoring",
@@ -59,45 +61,76 @@ const services = [
   },
 ];
 
-const Services = () => (
-  <Layout>
-    {/* Hero */}
-    <section className="bg-gradient-dark section-padding !py-20">
-      <div className="container-narrow text-center">
-        <h1 className="font-heading font-bold text-4xl md:text-5xl text-primary mb-4">Our Core Competencies</h1>
-        <p className="text-primary/60 max-w-xl mx-auto">Comprehensive engineering services that cover every phase of infrastructure development.</p>
-      </div>
-    </section>
+const Services = () => {
+  const [openIdx, setOpenIdx] = useState<number | null>(0);
 
-    <section className="section-padding">
-      <div className="container-narrow max-w-3xl">
-        <Accordion type="single" collapsible className="space-y-4">
-          {services.map((s, i) => (
-            <AccordionItem key={i} value={`item-${i}`} className="border rounded-lg px-6 shadow-card">
-              <AccordionTrigger className="hover:no-underline">
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-lg bg-gradient-primary flex items-center justify-center shrink-0">
-                    <s.icon size={20} className="text-primary-foreground" />
+  return (
+    <Layout>
+      {/* Hero */}
+      <section className="pt-40 pb-24 px-6 sm:px-8 lg:px-16 relative overflow-hidden">
+        <div className="absolute inset-0 grid-bg opacity-30 pointer-events-none" />
+        <div className="relative container-narrow">
+          <div className="eyebrow mb-6 animate-fade-in-up">Our capabilities</div>
+          <h1 className="display-heading text-5xl md:text-7xl lg:text-8xl max-w-4xl animate-fade-in-up animation-delay-100">
+            Our core<br /><span className="text-ghost">competencies.</span>
+          </h1>
+          <p className="mt-8 text-muted-foreground max-w-2xl text-lg animate-fade-in-up animation-delay-200">
+            Four interconnected disciplines that cover every phase of infrastructure development — from initial survey to construction supervision.
+          </p>
+        </div>
+      </section>
+
+      {/* Accordion */}
+      <section className="px-6 sm:px-8 lg:px-16 pb-24">
+        <div className="container-narrow">
+          <div className="border-t border-border">
+            {services.map((s, i) => {
+              const isOpen = openIdx === i;
+              return (
+                <div key={i} className="border-b border-border">
+                  <button
+                    onClick={() => setOpenIdx(isOpen ? null : i)}
+                    className="w-full flex items-center gap-6 md:gap-10 py-8 md:py-10 text-left group"
+                  >
+                    <span className="font-mono text-sm text-muted-foreground w-8 shrink-0">{s.num}</span>
+                    <div className="hidden md:flex w-12 h-12 rounded-xl border border-border items-center justify-center shrink-0 group-hover:border-primary/40 transition-colors">
+                      <s.icon size={20} className="text-primary" />
+                    </div>
+                    <div className="flex-1">
+                      <h2 className="display-heading text-2xl md:text-4xl lg:text-5xl group-hover:text-primary transition-colors">
+                        {s.title}
+                      </h2>
+                      {!isOpen && <p className="mt-2 text-muted-foreground text-sm md:text-base">{s.tagline}</p>}
+                    </div>
+                    <div className="w-10 h-10 rounded-full border border-border flex items-center justify-center shrink-0 group-hover:border-primary group-hover:bg-primary/10 transition-all">
+                      {isOpen ? <Minus size={16} /> : <Plus size={16} />}
+                    </div>
+                  </button>
+                  <div className={`grid transition-all duration-500 ease-out ${isOpen ? "grid-rows-[1fr] opacity-100 pb-10" : "grid-rows-[0fr] opacity-0"}`}>
+                    <div className="overflow-hidden">
+                      <div className="pl-0 md:pl-24 pr-4 md:pr-16 max-w-4xl">
+                        <p className="text-muted-foreground text-base md:text-lg leading-relaxed mb-8">{s.tagline}</p>
+                        <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-4">
+                          {s.items.map((item, j) => (
+                            <li key={j} className="flex items-start gap-3 text-foreground/80 text-sm md:text-base">
+                              <span className="font-mono text-xs text-primary mt-1 shrink-0">
+                                {String(j + 1).padStart(2, "0")}
+                              </span>
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
                   </div>
-                  <span className="font-heading font-bold text-lg text-left">{s.title}</span>
                 </div>
-              </AccordionTrigger>
-              <AccordionContent>
-                <ul className="space-y-2 pl-14">
-                  {s.items.map((item, j) => (
-                    <li key={j} className="flex items-start gap-2 text-muted-foreground">
-                      <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
-      </div>
-    </section>
-  </Layout>
-);
+              );
+            })}
+          </div>
+        </div>
+      </section>
+    </Layout>
+  );
+};
 
 export default Services;
