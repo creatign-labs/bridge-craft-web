@@ -5,7 +5,8 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
+  :root,
+  :root.dark {
     /* Dark editorial palette */
     --background: 216 60% 8%;
     --foreground: 210 30% 96%;
@@ -26,7 +27,7 @@
     --secondary-foreground: 210 30% 96%;
 
     --muted: 216 40% 14%;
-    --muted-foreground: 216 15% 62%;
+    --muted-foreground: 216 15% 68%;
 
     /* Golden yellow */
     --accent: 40 90% 61%;
@@ -64,6 +65,66 @@
     --shadow-card: 0 8px 40px -12px hsl(216 70% 3% / 0.6);
     --shadow-card-hover: 0 20px 60px -12px hsl(216 70% 3% / 0.8);
     --shadow-glow: 0 0 60px -10px hsl(181 96% 74% / 0.35);
+  }
+
+  :root.light {
+    /* Light editorial palette — high contrast, legible */
+    --background: 210 33% 98%;
+    --foreground: 216 65% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 216 65% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 216 65% 10%;
+
+    /* Darker electric blue for readability on light bg */
+    --primary: 198 92% 34%;
+    --primary-foreground: 0 0% 100%;
+    --primary-dark: 198 92% 28%;
+    --primary-darker: 216 65% 10%;
+
+    --secondary: 216 20% 92%;
+    --secondary-foreground: 216 65% 12%;
+
+    --muted: 216 20% 94%;
+    --muted-foreground: 216 20% 32%;
+
+    --accent: 40 90% 48%;
+    --accent-foreground: 216 65% 10%;
+
+    --accent-coral: 3 74% 55%;
+    --accent-coral-foreground: 0 0% 100%;
+
+    --destructive: 0 74% 48%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 216 20% 84%;
+    --input: 216 20% 88%;
+    --ring: 198 92% 34%;
+
+    --sidebar-background: 210 33% 98%;
+    --sidebar-foreground: 216 65% 10%;
+    --sidebar-primary: 198 92% 34%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 216 20% 94%;
+    --sidebar-accent-foreground: 216 65% 10%;
+    --sidebar-border: 216 20% 84%;
+    --sidebar-ring: 198 92% 34%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(198 92% 40%), hsl(198 92% 28%));
+    --gradient-hero: radial-gradient(ellipse at 20% 20%, hsl(216 40% 92% / 0.9), transparent 60%),
+                     linear-gradient(180deg, hsl(210 33% 100% / 0.4) 0%, hsl(210 33% 96% / 0.8) 100%);
+    --shadow-card: 0 8px 30px -12px hsl(216 40% 30% / 0.15);
+    --shadow-card-hover: 0 20px 50px -12px hsl(216 40% 30% / 0.25);
+    --shadow-glow: 0 0 50px -10px hsl(198 92% 40% / 0.3);
+  }
+
+  html {
+    color-scheme: dark;
+  }
+  html.light {
+    color-scheme: light;
   }
 }
 
