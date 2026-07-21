@@ -90,7 +90,7 @@ const Projects = () => {
         <div className="container-narrow">
           <div className="eyebrow mb-6 animate-fade-in-up">Portfolio · 2010–2024</div>
           <h1 className="display-heading text-5xl md:text-7xl lg:text-8xl animate-fade-in-up animation-delay-100">
-            Selected<br /><span className="text-ghost">projects.</span>
+            Selected<br /><span className="text-primary">projects.</span>
           </h1>
           <p className="mt-8 text-muted-foreground max-w-xl text-lg animate-fade-in-up animation-delay-200">
             A portfolio of engineering achievements — from national highways and cable-stayed bridges to smart city networks.
@@ -118,7 +118,7 @@ const Projects = () => {
       </section>
 
       {/* Grid */}
-      <section className="px-6 sm:px-8 lg:px-16 pb-24">
+      <section className="px-6 sm:px-8 lg:px-16 pb-24 reveal">
         <div className="container-narrow grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filtered.map((p, i) => (
             <button

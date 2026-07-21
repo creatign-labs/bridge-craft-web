@@ -72,7 +72,7 @@ const Services = () => {
         <div className="relative container-narrow">
           <div className="eyebrow mb-6 animate-fade-in-up">Our capabilities</div>
           <h1 className="display-heading text-5xl md:text-7xl lg:text-8xl max-w-4xl animate-fade-in-up animation-delay-100">
-            Our core<br /><span className="text-ghost">competencies.</span>
+            Our core<br /><span className="text-primary">competencies.</span>
           </h1>
           <p className="mt-8 text-muted-foreground max-w-2xl text-lg animate-fade-in-up animation-delay-200">
             Four interconnected disciplines that cover every phase of infrastructure development — from initial survey to construction supervision.
@@ -81,7 +81,7 @@ const Services = () => {
       </section>
 
       {/* Accordion */}
-      <section className="px-6 sm:px-8 lg:px-16 pb-24">
+      <section className="px-6 sm:px-8 lg:px-16 pb-24 reveal">
         <div className="container-narrow">
           <div className="border-t border-border">
             {services.map((s, i) => {

@@ -18,7 +18,7 @@ const Contact = () => {
         <div className="container-narrow">
           <div className="eyebrow mb-6 animate-fade-in-up">Let's talk</div>
           <h1 className="display-heading text-5xl md:text-7xl lg:text-8xl animate-fade-in-up animation-delay-100">
-            Start a<br /><span className="text-ghost">conversation.</span>
+            Start a<br /><span className="text-primary">conversation.</span>
           </h1>
           <p className="mt-8 text-muted-foreground max-w-xl text-lg animate-fade-in-up animation-delay-200">
             Tell us about your project. Our engineering team will get back within 24 hours.
@@ -26,7 +26,7 @@ const Contact = () => {
         </div>
       </section>
 
-      <section className="px-6 sm:px-8 lg:px-16 pb-24">
+      <section className="px-6 sm:px-8 lg:px-16 pb-24 reveal">
         <div className="container-narrow grid lg:grid-cols-12 gap-10">
           {/* Form */}
           <form onSubmit={handleSubmit} className="lg:col-span-7 space-y-6 bg-card/40 border border-border rounded-3xl p-8 md:p-10">

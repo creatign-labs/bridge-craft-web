@@ -32,7 +32,7 @@ const Gallery = () => {
         <div className="container-narrow">
           <div className="eyebrow mb-6 animate-fade-in-up">Field & studio</div>
           <h1 className="display-heading text-5xl md:text-7xl lg:text-8xl animate-fade-in-up animation-delay-100">
-            Our work<br /><span className="text-ghost">in action.</span>
+            Our work<br /><span className="text-primary">in action.</span>
           </h1>
           <p className="mt-8 text-muted-foreground max-w-xl text-lg animate-fade-in-up animation-delay-200">
             A visual journey through our engineering projects — captured on-site and in the studio.
@@ -40,7 +40,7 @@ const Gallery = () => {
         </div>
       </section>
 
-      <section className="px-6 sm:px-8 lg:px-16 pb-24">
+      <section className="px-6 sm:px-8 lg:px-16 pb-24 reveal">
         <div className="container-narrow">
           <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
             {images.map((img, i) => (
