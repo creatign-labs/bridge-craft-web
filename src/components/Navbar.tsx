@@ -2,19 +2,35 @@ import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
+import { useSanity } from "@/hooks/use-sanity";
+import { navigationQuery, siteSettingsQuery } from "@/lib/sanity";
 
-const navLinks = [
-  { label: "Home", to: "/" },
-  { label: "Services", to: "/services" },
-  { label: "Projects", to: "/projects" },
-  { label: "Gallery", to: "/gallery" },
-  { label: "Contact", to: "/contact" },
+type NavItem = { label: string; href: string };
+type NavData = { label?: string; items?: NavItem[]; ctaLabel?: string; ctaHref?: string };
+type SiteData = { shortName?: string; tagline?: string; logoInitials?: string };
+
+const fallbackNav: NavItem[] = [
+  { label: "Home", href: "/" },
+  { label: "Services", href: "/services" },
+  { label: "Projects", href: "/projects" },
+  { label: "Gallery", href: "/gallery" },
+  { label: "Contact", href: "/contact" },
 ];
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+
+  const { data: nav } = useSanity<NavData>("navigation", navigationQuery);
+  const { data: site } = useSanity<SiteData>("siteSettings", siteSettingsQuery);
+
+  const items = nav?.items?.length ? nav.items : fallbackNav;
+  const ctaLabel = nav?.ctaLabel || "Start a project";
+  const ctaHref = nav?.ctaHref || "/contact";
+  const shortName = site?.shortName || "BRIDGE CRAFT";
+  const tagline = site?.tagline || "Engineers & Consultants";
+  const initials = site?.logoInitials || "BC";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -33,21 +49,21 @@ const Navbar = () => {
         <Link to="/" className="flex items-center gap-3 group">
           <div className="relative w-10 h-10 rounded-full border border-primary/60 flex items-center justify-center overflow-hidden">
             <div className="absolute inset-1 rounded-full bg-gradient-primary opacity-20 group-hover:opacity-40 transition-opacity" />
-            <span className="relative font-heading font-black text-primary text-sm">BC</span>
+            <span className="relative font-heading font-black text-primary text-sm">{initials}</span>
           </div>
           <div className="hidden sm:block leading-tight">
-            <div className="font-heading font-bold text-foreground text-sm tracking-tight">BRIDGE CRAFT</div>
-            <div className="font-mono text-[9px] text-muted-foreground uppercase tracking-[0.2em]">Engineers & Consultants</div>
+            <div className="font-heading font-bold text-foreground text-sm tracking-tight">{shortName}</div>
+            <div className="font-mono text-[9px] text-muted-foreground uppercase tracking-[0.2em]">{tagline}</div>
           </div>
         </Link>
 
         <div className="hidden lg:flex items-center gap-1">
-          {navLinks.map((link) => (
+          {items.map((link) => (
             <Link
-              key={link.to}
-              to={link.to}
+              key={link.href}
+              to={link.href}
               className={`px-4 py-2 text-sm font-medium rounded-full transition-colors ${
-                location.pathname === link.to
+                location.pathname === link.href
                   ? "text-primary"
                   : "text-foreground/70 hover:text-foreground"
               }`}
@@ -59,8 +75,8 @@ const Navbar = () => {
 
         <div className="flex items-center gap-3">
           <ThemeToggle />
-          <Link to="/contact" className="hidden sm:inline-flex btn-primary">
-            Start a project <ArrowUpRight size={16} />
+          <Link to={ctaHref} className="hidden sm:inline-flex btn-primary">
+            {ctaLabel} <ArrowUpRight size={16} />
           </Link>
           <button
             onClick={() => setOpen(!open)}
@@ -74,24 +90,24 @@ const Navbar = () => {
       {open && (
         <div className="lg:hidden bg-background/95 backdrop-blur-xl border-b border-border animate-fade-in">
           <div className="px-6 py-6 space-y-1">
-            {navLinks.map((link) => (
+            {items.map((link) => (
               <Link
-                key={link.to}
-                to={link.to}
+                key={link.href}
+                to={link.href}
                 onClick={() => setOpen(false)}
                 className={`block py-3 text-lg font-medium border-b border-border/60 ${
-                  location.pathname === link.to ? "text-primary" : "text-foreground"
+                  location.pathname === link.href ? "text-primary" : "text-foreground"
                 }`}
               >
                 {link.label}
               </Link>
             ))}
             <Link
-              to="/contact"
+              to={ctaHref}
               onClick={() => setOpen(false)}
               className="btn-primary w-full justify-center mt-4"
             >
-              Start a project <ArrowUpRight size={16} />
+              {ctaLabel} <ArrowUpRight size={16} />
             </Link>
           </div>
         </div>
