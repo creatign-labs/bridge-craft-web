@@ -1,13 +1,17 @@
 import { ReactNode } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
-const Layout = ({ children }: { children: ReactNode }) => (
-  <div className="min-h-screen flex flex-col bg-background">
-    <Navbar />
-    <main className="flex-1">{children}</main>
-    <Footer />
-  </div>
-);
+const Layout = ({ children }: { children: ReactNode }) => {
+  useScrollReveal();
+  return (
+    <div className="min-h-screen flex flex-col bg-background">
+      <Navbar />
+      <main className="flex-1">{children}</main>
+      <Footer />
+    </div>
+  );
+};
 
 export default Layout;

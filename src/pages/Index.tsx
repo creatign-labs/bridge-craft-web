@@ -56,7 +56,7 @@ const Index = () => (
           <h1 className="display-heading text-6xl md:text-8xl lg:text-9xl max-w-5xl">
             Engineering
             <br />
-            <span className="text-ghost">Excellence.</span>
+            <span className="text-primary">Excellence.</span>
           </h1>
           <p className="mt-8 text-lg md:text-xl text-foreground/70 max-w-xl leading-relaxed">
             From design to delivery — we engineer infrastructure that defines tomorrow. Precision, integrity, and innovation, built to last.
@@ -79,7 +79,7 @@ const Index = () => (
     </section>
 
     {/* STATS STRIP */}
-    <section className="border-y border-border bg-card/30">
+    <section className="border-y border-border bg-card/30 reveal">
       <div className="container-narrow px-6 sm:px-8 lg:px-16 grid grid-cols-2 md:grid-cols-4 divide-x divide-border">
         {stats.map((s, i) => (
           <div key={i} className="py-10 px-4 md:px-8 first:pl-0">
@@ -91,7 +91,7 @@ const Index = () => (
     </section>
 
     {/* ABOUT */}
-    <section className="section-padding">
+    <section className="section-padding reveal">
       <div className="container-narrow grid lg:grid-cols-12 gap-12 items-center">
         <div className="lg:col-span-6">
           <div className="eyebrow mb-6">About Bridge Craft</div>
@@ -123,13 +123,13 @@ const Index = () => (
     </section>
 
     {/* SERVICES */}
-    <section className="section-padding bg-card/30 border-y border-border">
+    <section className="section-padding bg-card/30 border-y border-border reveal">
       <div className="container-narrow">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
           <div>
             <div className="eyebrow mb-6">Core capabilities</div>
             <h2 className="display-heading text-4xl md:text-5xl lg:text-6xl max-w-2xl">
-              Four disciplines.<br /><span className="text-ghost">One vision.</span>
+              Four disciplines.<br /><span className="text-primary">One vision.</span>
             </h2>
           </div>
           <Link to="/services" className="btn-ghost self-start md:self-end">
@@ -153,7 +153,7 @@ const Index = () => (
     </section>
 
     {/* FEATURED PROJECTS */}
-    <section className="section-padding">
+    <section className="section-padding reveal">
       <div className="container-narrow">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
           <div>
@@ -193,7 +193,7 @@ const Index = () => (
     </section>
 
     {/* WHY BRIDGE CRAFT */}
-    <section className="section-padding bg-card/30 border-y border-border relative overflow-hidden">
+    <section className="section-padding bg-card/30 border-y border-border relative overflow-hidden reveal">
       <div className="absolute inset-0 grid-bg opacity-30 pointer-events-none" />
       <div className="relative container-narrow">
         <div className="max-w-3xl mb-16">
@@ -222,7 +222,7 @@ const Index = () => (
     </section>
 
     {/* SECTORS MARQUEE */}
-    <section className="py-16 overflow-hidden border-b border-border">
+    <section className="py-16 overflow-hidden border-b border-border reveal">
       <div className="eyebrow justify-center mb-8">Sectors we serve</div>
       <div className="flex overflow-hidden">
         <div className="flex gap-16 animate-marquee whitespace-nowrap pr-16">
