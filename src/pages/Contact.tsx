@@ -2,9 +2,36 @@ import { useState, FormEvent } from "react";
 import { MapPin, Phone, Mail, ExternalLink, ArrowUpRight } from "lucide-react";
 import Layout from "@/components/Layout";
 import { toast } from "sonner";
+import { useSanity } from "@/hooks/use-sanity";
+import { contactPageQuery, siteSettingsQuery } from "@/lib/sanity";
+
+type ContactData = {
+  eyebrow?: string;
+  headline?: string;
+  headlineAccent?: string;
+  intro?: string;
+  formHeading?: string;
+  formSubheading?: string;
+  submitLabel?: string;
+  externalFormUrl?: string;
+  externalFormLabel?: string;
+  address?: string;
+  phone?: string;
+  email?: string;
+  hours?: string;
+  mapEmbedUrl?: string;
+};
+type SiteData = { address?: string; primaryPhone?: string; primaryEmail?: string };
 
 const Contact = () => {
+  const { data } = useSanity<ContactData>("contactPage", contactPageQuery);
+  const { data: site } = useSanity<SiteData>("siteSettings", siteSettingsQuery);
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
+
+  const address = data?.address || site?.address || "124/1, 2nd Floor, Heera Panna Complex, G N Chetty Road, T Nagar, Chennai 600017, Tamil Nadu";
+  const phone = data?.phone || site?.primaryPhone || "+91 44 49793337";
+  const email = data?.email || site?.primaryEmail || "info@bridgecraft.in";
+  const mapUrl = data?.mapEmbedUrl || "https://www.google.com/maps?q=T+Nagar+Chennai&output=embed";
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -16,19 +43,18 @@ const Contact = () => {
     <Layout>
       <section className="pt-40 pb-16 px-6 sm:px-8 lg:px-16">
         <div className="container-narrow">
-          <div className="eyebrow mb-6 animate-fade-in-up">Let's talk</div>
+          <div className="eyebrow mb-6 animate-fade-in-up">{data?.eyebrow || "Let's talk"}</div>
           <h1 className="display-heading text-5xl md:text-7xl lg:text-8xl animate-fade-in-up animation-delay-100">
-            Start a<br /><span className="text-primary">conversation.</span>
+            {data?.headline || "Start a"}<br /><span className="text-primary">{data?.headlineAccent || "conversation."}</span>
           </h1>
           <p className="mt-8 text-muted-foreground max-w-xl text-lg animate-fade-in-up animation-delay-200">
-            Tell us about your project. Our engineering team will get back within 24 hours.
+            {data?.intro || "Tell us about your project. Our engineering team will get back within 24 hours."}
           </p>
         </div>
       </section>
 
       <section className="px-6 sm:px-8 lg:px-16 pb-24 reveal">
         <div className="container-narrow grid lg:grid-cols-12 gap-10">
-          {/* Form */}
           <form onSubmit={handleSubmit} className="lg:col-span-7 space-y-6 bg-card/40 border border-border rounded-3xl p-8 md:p-10">
             <div className="grid sm:grid-cols-2 gap-6">
               {[
@@ -72,20 +98,21 @@ const Contact = () => {
             </div>
             <div className="flex flex-wrap items-center gap-4 pt-4">
               <button type="submit" className="btn-primary">
-                Send message <ArrowUpRight size={16} />
+                {data?.submitLabel || "Send message"} <ArrowUpRight size={16} />
               </button>
-              <a
-                href="https://share.google/3kWr9VYD8IQz4PcD0"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
-              >
-                Or use our Google Form <ExternalLink size={14} />
-              </a>
+              {data?.externalFormUrl && (
+                <a
+                  href={data.externalFormUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  {data.externalFormLabel || "Or use our Google Form"} <ExternalLink size={14} />
+                </a>
+              )}
             </div>
           </form>
 
-          {/* Info + Map */}
           <div className="lg:col-span-5 space-y-6">
             <div className="bg-card/40 border border-border rounded-3xl p-8 space-y-6">
               <div className="eyebrow">Head office · Chennai</div>
@@ -94,21 +121,21 @@ const Contact = () => {
                   <MapPin size={18} className="text-primary mt-1 shrink-0" />
                   <div>
                     <div className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground mb-1">Address</div>
-                    <p className="text-sm leading-relaxed">124/1, 2nd Floor, Heera Panna Complex,<br />G N Chetty Road, T Nagar,<br />Chennai 600017, Tamil Nadu</p>
+                    <p className="text-sm leading-relaxed whitespace-pre-line">{address}</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
                   <Phone size={18} className="text-primary mt-1 shrink-0" />
                   <div>
                     <div className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground mb-1">Phone</div>
-                    <a href="tel:+914449793337" className="text-sm hover:text-primary transition-colors">+91 44 49793337</a>
+                    <a href={`tel:${phone.replace(/\s/g, "")}`} className="text-sm hover:text-primary transition-colors">{phone}</a>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
                   <Mail size={18} className="text-primary mt-1 shrink-0" />
                   <div>
                     <div className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground mb-1">Email</div>
-                    <a href="mailto:info@bridgecraft.in" className="text-sm hover:text-primary transition-colors">info@bridgecraft.in</a>
+                    <a href={`mailto:${email}`} className="text-sm hover:text-primary transition-colors">{email}</a>
                   </div>
                 </div>
               </div>
@@ -116,7 +143,7 @@ const Contact = () => {
 
             <div className="rounded-3xl overflow-hidden border border-border aspect-[4/3] bg-muted">
               <iframe
-                src="https://www.google.com/maps?q=T+Nagar+Chennai&output=embed"
+                src={mapUrl}
                 width="100%"
                 height="100%"
                 style={{ border: 0, filter: "grayscale(0.4) contrast(1.1) invert(0.9) hue-rotate(180deg)" }}

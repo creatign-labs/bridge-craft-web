@@ -10,8 +10,12 @@ import projectGeotech from "@/assets/project-geotech.jpg";
 import projectRailway from "@/assets/project-railway.jpg";
 import projectUrban from "@/assets/project-urban.jpg";
 import teamImg from "@/assets/team-office.jpg";
+import { useSanity } from "@/hooks/use-sanity";
+import { galleryQuery, imageUrl } from "@/lib/sanity";
 
-const images = [
+type GalleryItem = { _id: string; title?: string; category?: string; image?: unknown; aspect?: string };
+
+const fallback = [
   { src: heroImg, alt: "Cable-stayed bridge at sunset" },
   { src: projectHighway, alt: "Highway interchange" },
   { src: projectBridge, alt: "Bridge tower detail" },
@@ -24,7 +28,15 @@ const images = [
 ];
 
 const Gallery = () => {
+  const { data } = useSanity<{ items?: GalleryItem[] }>("gallery", galleryQuery);
   const [lightbox, setLightbox] = useState<number | null>(null);
+
+  const items = data?.items?.length
+    ? data.items.map((it, i) => ({
+        src: imageUrl(it.image, fallback[i % fallback.length].src),
+        alt: it.title || fallback[i % fallback.length].alt,
+      }))
+    : fallback;
 
   return (
     <Layout>
@@ -43,7 +55,7 @@ const Gallery = () => {
       <section className="px-6 sm:px-8 lg:px-16 pb-24 reveal">
         <div className="container-narrow">
           <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
-            {images.map((img, i) => (
+            {items.map((img, i) => (
               <button
                 key={i}
                 onClick={() => setLightbox(i)}
@@ -71,7 +83,7 @@ const Gallery = () => {
           <button onClick={() => setLightbox(null)} className="absolute top-6 right-6 w-12 h-12 rounded-full border border-border bg-card/60 backdrop-blur flex items-center justify-center hover:bg-card">
             <X size={20} />
           </button>
-          <img src={images[lightbox].src} alt={images[lightbox].alt} className="max-w-full max-h-[85vh] object-contain rounded-2xl" />
+          <img src={items[lightbox].src} alt={items[lightbox].alt} className="max-w-full max-h-[85vh] object-contain rounded-2xl" />
         </div>
       )}
     </Layout>
