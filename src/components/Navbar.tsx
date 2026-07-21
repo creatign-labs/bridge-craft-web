@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ArrowUpRight } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
 
 const navLinks = [
   { label: "Home", to: "/" },
@@ -57,6 +58,7 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center gap-3">
+          <ThemeToggle />
           <Link to="/contact" className="hidden sm:inline-flex btn-primary">
             Start a project <ArrowUpRight size={16} />
           </Link>
