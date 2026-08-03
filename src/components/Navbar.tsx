@@ -30,11 +30,11 @@ const Navbar = () => {
   const { data: site } = useSanity<SiteData>("siteSettings", siteSettingsQuery);
 
   const items = nav?.items?.length ? nav.items : fallbackNav;
-  const ctaLabel = nav?.ctaLabel || "Start a project";
+  const ctaLabel = nav?.ctaLabel || "Contact us";
   const ctaHref = nav?.ctaHref || "/contact";
-  const shortName = site?.shortName || "BRIDGE CRAFT";
+  const shortName = site?.shortName || company.shortName;
   const tagline = site?.tagline || "Engineers & Consultants";
-  const initials = site?.logoInitials || "BC";
+
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
