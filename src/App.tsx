@@ -6,7 +6,9 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { useEffect } from "react";
 import { ThemeProvider } from "@/hooks/use-theme";
 import Index from "./pages/Index";
+import About from "./pages/About";
 import Projects from "./pages/Projects";
+
 import Services from "./pages/Services";
 import Gallery from "./pages/Gallery";
 import Contact from "./pages/Contact";
@@ -29,7 +31,9 @@ const AppRoutes = () => (
     <ScrollToTop />
     <Routes>
       <Route path="/" element={<Index />} />
+      <Route path="/about" element={<About />} />
       <Route path="/projects" element={<Projects />} />
+
       <Route path="/services" element={<Services />} />
       <Route path="/gallery" element={<Gallery />} />
       <Route path="/contact" element={<Contact />} />

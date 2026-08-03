@@ -1,31 +1,11 @@
 import { useState } from "react";
 import { X, ZoomIn } from "lucide-react";
 import Layout from "@/components/Layout";
-import heroImg from "@/assets/hero-bridge.jpg";
-import projectHighway from "@/assets/project-highway.jpg";
-import projectBridge from "@/assets/project-bridge.jpg";
-import projectSmartcity from "@/assets/project-smartcity.jpg";
-import projectIndustrial from "@/assets/project-industrial.jpg";
-import projectGeotech from "@/assets/project-geotech.jpg";
-import projectRailway from "@/assets/project-railway.jpg";
-import projectUrban from "@/assets/project-urban.jpg";
-import teamImg from "@/assets/team-office.jpg";
 import { useSanity } from "@/hooks/use-sanity";
 import { galleryQuery, imageUrl } from "@/lib/sanity";
+import { galleryImages } from "@/data/company";
 
 type GalleryItem = { _id: string; title?: string; category?: string; image?: unknown; aspect?: string };
-
-const fallback = [
-  { src: heroImg, alt: "Cable-stayed bridge at sunset" },
-  { src: projectHighway, alt: "Highway interchange" },
-  { src: projectBridge, alt: "Bridge tower detail" },
-  { src: projectSmartcity, alt: "Smart city roads" },
-  { src: projectIndustrial, alt: "Industrial corridor" },
-  { src: projectGeotech, alt: "Geotechnical investigation" },
-  { src: projectRailway, alt: "Railway overpass" },
-  { src: projectUrban, alt: "Urban drainage" },
-  { src: teamImg, alt: "Engineering team" },
-];
 
 const Gallery = () => {
   const { data } = useSanity<{ items?: GalleryItem[] }>("gallery", galleryQuery);
@@ -33,10 +13,11 @@ const Gallery = () => {
 
   const items = data?.items?.length
     ? data.items.map((it, i) => ({
-        src: imageUrl(it.image, fallback[i % fallback.length].src),
-        alt: it.title || fallback[i % fallback.length].alt,
+        src: imageUrl(it.image, galleryImages[i % galleryImages.length].src),
+        alt: it.title || galleryImages[i % galleryImages.length].alt,
       }))
-    : fallback;
+    : galleryImages;
+
 
   return (
     <Layout>
@@ -47,8 +28,10 @@ const Gallery = () => {
             Our work<br /><span className="text-primary">in action.</span>
           </h1>
           <p className="mt-8 text-muted-foreground max-w-xl text-lg animate-fade-in-up animation-delay-200">
-            A visual journey through our engineering projects — captured on-site and in the studio.
+            Field photography from our marine, highway, railway and renewable-energy assignments —
+            barge-mounted rigs, borehole logging, resistivity surveys and structural modelling.
           </p>
+
         </div>
       </section>
 

@@ -1,9 +1,11 @@
 import { useState, FormEvent } from "react";
-import { MapPin, Phone, Mail, ExternalLink, ArrowUpRight } from "lucide-react";
+import { MapPin, Phone, Mail, ExternalLink, ArrowUpRight, Download } from "lucide-react";
 import Layout from "@/components/Layout";
 import { toast } from "sonner";
 import { useSanity } from "@/hooks/use-sanity";
 import { contactPageQuery, siteSettingsQuery } from "@/lib/sanity";
+import { company } from "@/data/company";
+
 
 type ContactData = {
   eyebrow?: string;
@@ -28,10 +30,11 @@ const Contact = () => {
   const { data: site } = useSanity<SiteData>("siteSettings", siteSettingsQuery);
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
 
-  const address = data?.address || site?.address || "124/1, 2nd Floor, Heera Panna Complex, G N Chetty Road, T Nagar, Chennai 600017, Tamil Nadu";
-  const phone = data?.phone || site?.primaryPhone || "+91 44 49793337";
-  const email = data?.email || site?.primaryEmail || "info@bridgecraft.in";
-  const mapUrl = data?.mapEmbedUrl || "https://www.google.com/maps?q=T+Nagar+Chennai&output=embed";
+  const address = data?.address || site?.address || company.address;
+  const phone = data?.phone || site?.primaryPhone || company.phone;
+  const email = data?.email || site?.primaryEmail || company.email;
+  const mapUrl = data?.mapEmbedUrl || company.mapUrl;
+
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -139,20 +142,31 @@ const Contact = () => {
                   </div>
                 </div>
               </div>
+              <a
+                href={company.profileUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm text-primary hover:underline"
+              >
+                <Download size={15} /> Download Company Profile 2026
+              </a>
             </div>
+
 
             <div className="rounded-3xl overflow-hidden border border-border aspect-[4/3] bg-muted">
               <iframe
                 src={mapUrl}
                 width="100%"
                 height="100%"
-                style={{ border: 0, filter: "grayscale(0.4) contrast(1.1) invert(0.9) hue-rotate(180deg)" }}
+                style={{ border: 0 }}
+                className="dark:[filter:grayscale(0.4)_contrast(1.1)_invert(0.9)_hue-rotate(180deg)]"
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Bridge Craft Location"
+                title="Bridge Craft Engineers & Consultants — Chennai head office location"
               />
             </div>
+
           </div>
         </div>
       </section>

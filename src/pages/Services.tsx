@@ -3,6 +3,8 @@ import { Plus, Minus, Compass } from "lucide-react";
 import Layout from "@/components/Layout";
 import { useSanity } from "@/hooks/use-sanity";
 import { servicesPageQuery, getIcon } from "@/lib/sanity";
+import { services as companyServices } from "@/data/company";
+
 
 type ServiceDoc = {
   _id: string;
@@ -24,7 +26,8 @@ type Data = {
 const Services = () => {
   const { data } = useSanity<Data>("servicesPage", servicesPageQuery);
   const [openIdx, setOpenIdx] = useState<number | null>(0);
-  const services = data?.services?.length ? data.services : [];
+  const services: ServiceDoc[] = data?.services?.length ? data.services : companyServices;
+
 
   return (
     <Layout>
@@ -37,8 +40,10 @@ const Services = () => {
             <span className="text-primary">{data?.headlineAccent || "competencies."}</span>
           </h1>
           <p className="mt-8 text-muted-foreground max-w-2xl text-lg animate-fade-in-up animation-delay-200">
-            {data?.intro || "Four interconnected disciplines that cover every phase of infrastructure development — from initial survey to construction supervision."}
+            {data?.intro ||
+              "Four interconnected disciplines — pre-construction advisory, structural, geotechnical and geophysical engineering — covering every phase from ground investigation to structural excellence."}
           </p>
+
         </div>
       </section>
 

@@ -4,6 +4,8 @@ import { Menu, X, ArrowUpRight } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 import { useSanity } from "@/hooks/use-sanity";
 import { navigationQuery, siteSettingsQuery } from "@/lib/sanity";
+import { bcAssets } from "@/assets/bc";
+import { company } from "@/data/company";
 
 type NavItem = { label: string; href: string };
 type NavData = { label?: string; items?: NavItem[]; ctaLabel?: string; ctaHref?: string };
@@ -11,11 +13,13 @@ type SiteData = { shortName?: string; tagline?: string; logoInitials?: string };
 
 const fallbackNav: NavItem[] = [
   { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
   { label: "Projects", href: "/projects" },
   { label: "Gallery", href: "/gallery" },
   { label: "Contact", href: "/contact" },
 ];
+
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -26,11 +30,11 @@ const Navbar = () => {
   const { data: site } = useSanity<SiteData>("siteSettings", siteSettingsQuery);
 
   const items = nav?.items?.length ? nav.items : fallbackNav;
-  const ctaLabel = nav?.ctaLabel || "Start a project";
+  const ctaLabel = nav?.ctaLabel || "Contact us";
   const ctaHref = nav?.ctaHref || "/contact";
-  const shortName = site?.shortName || "BRIDGE CRAFT";
+  const shortName = site?.shortName || company.shortName;
   const tagline = site?.tagline || "Engineers & Consultants";
-  const initials = site?.logoInitials || "BC";
+
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -47,15 +51,23 @@ const Navbar = () => {
     >
       <div className="container-narrow flex items-center justify-between h-20 px-6 sm:px-8 lg:px-16">
         <Link to="/" className="flex items-center gap-3 group">
-          <div className="relative w-10 h-10 rounded-full border border-primary/60 flex items-center justify-center overflow-hidden">
-            <div className="absolute inset-1 rounded-full bg-gradient-primary opacity-20 group-hover:opacity-40 transition-opacity" />
-            <span className="relative font-heading font-black text-primary text-sm">{initials}</span>
-          </div>
+          <img
+            src={bcAssets.logoMark}
+            alt={`${company.name} logo`}
+            className="h-8 w-auto hidden dark:block transition-transform group-hover:scale-105"
+          />
+          <img
+            src={bcAssets.logoMarkDark}
+            alt=""
+            aria-hidden="true"
+            className="h-8 w-auto dark:hidden transition-transform group-hover:scale-105"
+          />
           <div className="hidden sm:block leading-tight">
             <div className="font-heading font-bold text-foreground text-sm tracking-tight">{shortName}</div>
             <div className="font-mono text-[9px] text-muted-foreground uppercase tracking-[0.2em]">{tagline}</div>
           </div>
         </Link>
+
 
         <div className="hidden lg:flex items-center gap-1">
           {items.map((link) => (

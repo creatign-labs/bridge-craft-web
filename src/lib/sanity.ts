@@ -11,8 +11,15 @@ import {
   Lightbulb,
   Train,
   ArrowUpRight,
+  Anchor,
+  Layers,
+  Gauge,
+  Mountain,
+  CheckCircle2,
+  Waves,
   type LucideIcon,
 } from "lucide-react";
+
 
 export const sanityClient = createClient({
   projectId: "n5ypw1x0",
@@ -43,7 +50,14 @@ const iconMap: Record<string, LucideIcon> = {
   Lightbulb,
   Train,
   ArrowUpRight,
+  Anchor,
+  Layers,
+  Gauge,
+  Mountain,
+  CheckCircle2,
+  Waves,
 };
+
 
 export const getIcon = (name?: string, fallback: LucideIcon = Compass): LucideIcon =>
   (name && iconMap[name]) || fallback;
