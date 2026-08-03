@@ -34,11 +34,13 @@ const Footer = () => {
     ? footer.navLinks
     : [
         { label: "Home", href: "/" },
+        { label: "About", href: "/about" },
         { label: "Services", href: "/services" },
         { label: "Projects", href: "/projects" },
         { label: "Gallery", href: "/gallery" },
         { label: "Contact", href: "/contact" },
       ];
+
   const legal = footer?.legalLinks?.length
     ? footer.legalLinks
     : [
