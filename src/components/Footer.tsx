@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
-import { MapPin, Phone, Mail, ArrowUpRight } from "lucide-react";
+import { MapPin, Phone, Mail, ArrowUpRight, Download } from "lucide-react";
 import { useSanity } from "@/hooks/use-sanity";
 import { footerQuery, siteSettingsQuery } from "@/lib/sanity";
+import { bcAssets } from "@/assets/bc";
+import { company } from "@/data/company";
+
 
 type FooterData = {
   ctaEyebrow?: string;
