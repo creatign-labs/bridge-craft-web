@@ -50,7 +50,14 @@ const iconMap: Record<string, LucideIcon> = {
   Lightbulb,
   Train,
   ArrowUpRight,
+  Anchor,
+  Layers,
+  Gauge,
+  Mountain,
+  CheckCircle2,
+  Waves,
 };
+
 
 export const getIcon = (name?: string, fallback: LucideIcon = Compass): LucideIcon =>
   (name && iconMap[name]) || fallback;
