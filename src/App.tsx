@@ -6,7 +6,9 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { useEffect } from "react";
 import { ThemeProvider } from "@/hooks/use-theme";
 import Index from "./pages/Index";
+import About from "./pages/About";
 import Projects from "./pages/Projects";
+
 import Services from "./pages/Services";
 import Gallery from "./pages/Gallery";
 import Contact from "./pages/Contact";
