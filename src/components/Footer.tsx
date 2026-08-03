@@ -65,8 +65,8 @@ const Footer = () => {
             <Link to={footer?.primaryCta?.href || "/contact"} className="btn-primary">
               {footer?.primaryCta?.label || "Start a project"} <ArrowUpRight size={16} />
             </Link>
-            <a href={footer?.secondaryCta?.href || "tel:+914449793337"} className="btn-ghost">
-              {footer?.secondaryCta?.label || site?.primaryPhone || "+91 44 49793337"}
+            <a href={footer?.secondaryCta?.href || `tel:${company.phone}`} className="btn-ghost">
+              {footer?.secondaryCta?.label || site?.primaryPhone || company.phone}
             </a>
           </div>
         </div>
@@ -74,19 +74,27 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pt-16 border-t border-border">
           <div className="md:col-span-5">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-full border border-primary/60 flex items-center justify-center">
-                <span className="font-heading font-black text-primary text-sm">{site?.logoInitials || "BC"}</span>
-              </div>
+              <img src={bcAssets.logoMark} alt="" aria-hidden="true" className="h-8 w-auto hidden dark:block" />
+              <img src={bcAssets.logoMarkDark} alt="" aria-hidden="true" className="h-8 w-auto dark:hidden" />
               <div>
-                <div className="font-heading font-bold text-sm">{site?.shortName || "BRIDGE CRAFT"}</div>
+                <div className="font-heading font-bold text-sm">{site?.shortName || company.shortName}</div>
                 <div className="font-mono text-[9px] text-muted-foreground uppercase tracking-[0.2em]">
                   {site?.tagline || "Engineers & Consultants"}
                 </div>
               </div>
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed max-w-md">
-              {footer?.blurb || "A Chennai-based Civil & Infrastructure Design Consultancy delivering precision-engineered solutions for highways, bridges, and urban infrastructure."}
+              {footer?.blurb ||
+                "Engineering Design Consultants specializing in Structural, Geotechnical and Geophysical Engineering — from ground investigation to structural excellence."}
             </p>
+            <a
+              href={company.profileUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex items-center gap-2 text-sm text-primary hover:underline"
+            >
+              <Download size={15} /> Company Profile 2026 (PDF)
+            </a>
           </div>
 
           <div className="md:col-span-3">
@@ -105,19 +113,20 @@ const Footer = () => {
             <div className="space-y-4 text-sm">
               <div className="flex items-start gap-3 text-foreground/80">
                 <MapPin size={16} className="mt-0.5 shrink-0 text-primary" />
-                <span>{site?.address || "124/1, 2nd Floor, Heera Panna Complex, G N Chetty Road, T Nagar, Chennai 600017"}</span>
+                <span>{site?.address || company.address}</span>
               </div>
-              <a href={`tel:${(site?.primaryPhone || "+914449793337").replace(/\s/g, "")}`} className="flex items-center gap-3 text-foreground/80 hover:text-primary transition-colors">
+              <a href={`tel:${(site?.primaryPhone || company.phone).replace(/\s/g, "")}`} className="flex items-center gap-3 text-foreground/80 hover:text-primary transition-colors">
                 <Phone size={16} className="shrink-0 text-primary" />
-                {site?.primaryPhone || "+91 44 49793337"}
+                {site?.primaryPhone || company.phone}
               </a>
-              <a href={`mailto:${site?.primaryEmail || "info@bridgecraft.in"}`} className="flex items-center gap-3 text-foreground/80 hover:text-primary transition-colors">
+              <a href={`mailto:${site?.primaryEmail || company.email}`} className="flex items-center gap-3 text-foreground/80 hover:text-primary transition-colors">
                 <Mail size={16} className="shrink-0 text-primary" />
-                {site?.primaryEmail || "info@bridgecraft.in"}
+                {site?.primaryEmail || company.email}
               </a>
             </div>
           </div>
         </div>
+
 
         <div className="mt-16 pt-6 border-t border-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div className="font-mono text-xs text-muted-foreground">{copyright}</div>
