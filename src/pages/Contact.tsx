@@ -142,7 +142,16 @@ const Contact = () => {
                   </div>
                 </div>
               </div>
+              <a
+                href={company.profileUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm text-primary hover:underline"
+              >
+                <Download size={15} /> Download Company Profile 2026
+              </a>
             </div>
+
 
             <div className="rounded-3xl overflow-hidden border border-border aspect-[4/3] bg-muted">
               <iframe
