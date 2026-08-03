@@ -40,8 +40,10 @@ const Services = () => {
             <span className="text-primary">{data?.headlineAccent || "competencies."}</span>
           </h1>
           <p className="mt-8 text-muted-foreground max-w-2xl text-lg animate-fade-in-up animation-delay-200">
-            {data?.intro || "Four interconnected disciplines that cover every phase of infrastructure development — from initial survey to construction supervision."}
+            {data?.intro ||
+              "Four interconnected disciplines — pre-construction advisory, structural, geotechnical and geophysical engineering — covering every phase from ground investigation to structural excellence."}
           </p>
+
         </div>
       </section>
 
