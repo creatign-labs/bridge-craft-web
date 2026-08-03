@@ -28,8 +28,10 @@ const Gallery = () => {
             Our work<br /><span className="text-primary">in action.</span>
           </h1>
           <p className="mt-8 text-muted-foreground max-w-xl text-lg animate-fade-in-up animation-delay-200">
-            A visual journey through our engineering projects — captured on-site and in the studio.
+            Field photography from our marine, highway, railway and renewable-energy assignments —
+            barge-mounted rigs, borehole logging, resistivity surveys and structural modelling.
           </p>
+
         </div>
       </section>
 
