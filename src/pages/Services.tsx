@@ -26,7 +26,8 @@ type Data = {
 const Services = () => {
   const { data } = useSanity<Data>("servicesPage", servicesPageQuery);
   const [openIdx, setOpenIdx] = useState<number | null>(0);
-  const services = data?.services?.length ? data.services : [];
+  const services: ServiceDoc[] = data?.services?.length ? data.services : companyServices;
+
 
   return (
     <Layout>
