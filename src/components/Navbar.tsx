@@ -4,6 +4,8 @@ import { Menu, X, ArrowUpRight } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 import { useSanity } from "@/hooks/use-sanity";
 import { navigationQuery, siteSettingsQuery } from "@/lib/sanity";
+import { bcAssets } from "@/assets/bc";
+import { company } from "@/data/company";
 
 type NavItem = { label: string; href: string };
 type NavData = { label?: string; items?: NavItem[]; ctaLabel?: string; ctaHref?: string };
@@ -11,11 +13,13 @@ type SiteData = { shortName?: string; tagline?: string; logoInitials?: string };
 
 const fallbackNav: NavItem[] = [
   { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
   { label: "Projects", href: "/projects" },
   { label: "Gallery", href: "/gallery" },
   { label: "Contact", href: "/contact" },
 ];
+
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
