@@ -1,15 +1,20 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, ArrowUpRight, Shield, Compass, HardHat, Building2, Lightbulb, ChevronDown } from "lucide-react";
+import { ArrowRight, ArrowUpRight, ChevronDown, Compass, Building2, HardHat, Waves, Download } from "lucide-react";
 import Layout from "@/components/Layout";
-import heroImg from "@/assets/hero-bridge.jpg";
-import teamImg from "@/assets/team-office.jpg";
-import projectHighway from "@/assets/project-highway.jpg";
-import projectBridge from "@/assets/project-bridge.jpg";
-import projectSmartcity from "@/assets/project-smartcity.jpg";
-import projectRailway from "@/assets/project-railway.jpg";
 import { useSanity } from "@/hooks/use-sanity";
 import { homepageQuery, imageUrl, getIcon } from "@/lib/sanity";
 import type { LucideIcon } from "lucide-react";
+import { bcAssets } from "@/assets/bc";
+import {
+  company,
+  introParagraphs,
+  services as companyServices,
+  projects as companyProjects,
+  stats as companyStats,
+  sectors as companySectors,
+  values as companyValues,
+  whyChooseUs,
+} from "@/data/company";
 
 type Homepage = {
   heroEyebrow?: string;
@@ -44,66 +49,50 @@ type Homepage = {
   sectors?: string[];
 };
 
-const fallbackProjectImgs = [projectHighway, projectBridge, projectSmartcity, projectRailway];
-const fallbackServiceIcons: LucideIcon[] = [Compass, HardHat, Shield, Building2];
+const fallbackServiceIcons: LucideIcon[] = [Compass, Building2, HardHat, Waves];
+const featuredProjectFallback = companyProjects.slice(0, 4);
 
 const Index = () => {
   const { data } = useSanity<Homepage>("homepage", homepageQuery);
 
-  const stats = data?.stats?.length
-    ? data.stats
-    : [
-        { value: "15+", label: "Years of expertise" },
-        { value: "120+", label: "Projects delivered" },
-        { value: "₹8,000Cr", label: "Assets designed" },
-        { value: "50+", label: "Cities served" },
-      ];
-
-  const services = data?.featuredServices?.length
-    ? data.featuredServices
-    : [
-        { _id: "s1", number: "01", title: "Detailed Design Engineering", shortDescription: "Structural, highway, and bridge design with cutting-edge CAD/BIM tools.", icon: "Compass" },
-        { _id: "s2", number: "02", title: "Geotechnical Investigations", shortDescription: "Comprehensive soil testing and foundation design recommendations.", icon: "HardHat" },
-        { _id: "s3", number: "03", title: "Detailed Project Reports", shortDescription: "Feasibility studies, cost estimation, and compliance-ready DPRs.", icon: "Shield" },
-        { _id: "s4", number: "04", title: "Support Services", shortDescription: "Quality assurance, project management, and construction supervision.", icon: "Building2" },
-      ];
+  const stats = data?.stats?.length ? data.stats : companyStats;
+  const services = data?.featuredServices?.length ? data.featuredServices : companyServices;
+  const strengths = data?.strengths?.length ? data.strengths : whyChooseUs.slice(0, 4);
+  const sectors = data?.sectors?.length ? data.sectors : companySectors;
+  const values = data?.aboutValues?.length ? data.aboutValues : companyValues.map((v) => v.title).slice(0, 3);
 
   const projects = data?.featuredProjects?.length
-    ? data.featuredProjects
-    : [
-        { _id: "p1", title: "National Highway Expansion", tag: "Highways", year: "2024" },
-        { _id: "p2", title: "Cable-Stayed Bridge", tag: "Bridges", year: "2024" },
-        { _id: "p3", title: "Smart City Infrastructure", tag: "Urban", year: "2023" },
-        { _id: "p4", title: "Railway Overpass Network", tag: "Railways", year: "2023" },
-      ];
-
-  const strengths = data?.strengths?.length
-    ? data.strengths
-    : [
-        { icon: "Shield", title: "Integrated Design Capability", description: "End-to-end engineering solutions under one roof — from concept to commissioning." },
-        { icon: "HardHat", title: "Field-Tested Practices", description: "Proven methodologies refined through decades of real-world execution." },
-        { icon: "Building2", title: "Institutional Expertise", description: "Deep knowledge across government and private sector infrastructure projects." },
-        { icon: "Lightbulb", title: "Agile Execution", description: "Rapid delivery without compromising on the highest quality standards." },
-      ];
-
-  const sectors = data?.sectors?.length
-    ? data.sectors
-    : ["Highways", "Bridges", "Smart Cities", "Industrial Corridors", "Railways", "Urban Infrastructure", "Ports", "Metro Rail"];
-
-  const values = data?.aboutValues?.length ? data.aboutValues : ["Integrity", "Precision", "Innovation"];
+    ? data.featuredProjects.map((p, i) => ({
+        _id: p._id,
+        title: p.title,
+        tag: p.tag ?? featuredProjectFallback[i % 4].tag,
+        meta: p.year ?? featuredProjectFallback[i % 4].value,
+        image: imageUrl(p.image, featuredProjectFallback[i % 4].image),
+      }))
+    : featuredProjectFallback.map((p) => ({
+        _id: p._id,
+        title: p.title,
+        tag: p.tag,
+        meta: p.value,
+        image: p.image,
+      }));
 
   return (
     <Layout>
       {/* HERO */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
-        <img src={imageUrl(data?.heroImage, heroImg)} alt="Infrastructure" className="absolute inset-0 w-full h-full object-cover" />
+        <img
+          src={imageUrl(data?.heroImage, bcAssets.marineBridgeSite)}
+          alt="Major marine bridge works over Middle Strait Creek, NH-04, Andaman & Nicobar Islands"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
         <div className="absolute inset-0 bg-hero-overlay" />
         <div className="absolute inset-0 bg-background/40" />
 
         <div className="relative z-10 container-narrow px-6 sm:px-8 lg:px-16 w-full pt-32 pb-24">
           <div className="animate-fade-in-up">
             <div className="eyebrow mb-8">
-              <span>{data?.heroEyebrow || "EST. 2010 · CHENNAI · CIVIL & INFRASTRUCTURE"}</span>
+              <span>{data?.heroEyebrow || "CHENNAI · STRUCTURAL · GEOTECHNICAL · GEOPHYSICAL"}</span>
             </div>
             <h1 className="display-heading text-6xl md:text-8xl lg:text-9xl max-w-5xl">
               {data?.heroHeadline || "Engineering"}
@@ -111,7 +100,8 @@ const Index = () => {
               <span className="text-primary">{data?.heroHeadlineAccent || "Excellence."}</span>
             </h1>
             <p className="mt-8 text-lg md:text-xl text-foreground/70 max-w-xl leading-relaxed">
-              {data?.heroSubheadline || "From design to delivery — we engineer infrastructure that defines tomorrow. Precision, integrity, and innovation, built to last."}
+              {data?.heroSubheadline ||
+                "From ground investigation to structural excellence — technically sound, economically optimized and execution-ready engineering solutions."}
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
               <Link to={data?.heroPrimaryCta?.href || "/services"} className="btn-primary">
@@ -152,7 +142,7 @@ const Index = () => {
               <span className="text-primary">{data?.aboutHeadlineAccent || "precision."}</span>
             </h2>
             <p className="text-muted-foreground mt-8 leading-relaxed max-w-lg whitespace-pre-line">
-              {data?.aboutBody || "Bridge Craft Engineers & Consultants is a premier Civil & Infrastructure Design Consultancy headquartered in Chennai. We combine decades of engineering expertise with innovative design methodologies to deliver infrastructure that stands the test of time."}
+              {data?.aboutBody || introParagraphs[0]}
             </p>
             <div className="grid grid-cols-3 gap-6 mt-10 pt-10 border-t border-border">
               {values.map((v, i) => (
@@ -162,14 +152,29 @@ const Index = () => {
                 </div>
               ))}
             </div>
-            <Link to={data?.aboutCtaHref || "/services"} className="mt-10 inline-flex items-center gap-2 text-primary font-semibold group">
-              {data?.aboutCtaLabel || "Learn more about us"} <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
+            <div className="mt-10 flex flex-wrap items-center gap-6">
+              <Link to={data?.aboutCtaHref || "/about"} className="inline-flex items-center gap-2 text-primary font-semibold group">
+                {data?.aboutCtaLabel || "Learn more about us"} <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <a
+                href={company.profileUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+              >
+                <Download size={15} /> Company Profile 2026
+              </a>
+            </div>
           </div>
           <div className="lg:col-span-6 relative">
             <div className="absolute -inset-4 bg-gradient-primary opacity-10 blur-3xl rounded-full" />
             <div className="relative rounded-2xl overflow-hidden border border-border">
-              <img src={imageUrl(data?.aboutImage, teamImg)} alt="Our Team" className="w-full aspect-[4/5] object-cover" />
+              <img
+                src={imageUrl(data?.aboutImage, bcAssets.marineGeotechTeam)}
+                alt="Bridge Craft geotechnical crew operating a barge-mounted drilling rig"
+                className="w-full aspect-[4/5] object-cover"
+                loading="lazy"
+              />
             </div>
           </div>
         </div>
@@ -214,7 +219,7 @@ const Index = () => {
         <div className="container-narrow">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
             <div>
-              <div className="eyebrow mb-6">{data?.projectsEyebrow || "Selected work"}</div>
+              <div className="eyebrow mb-6">{data?.projectsEyebrow || "Projects executed"}</div>
               <h2 className="display-heading text-4xl md:text-5xl lg:text-6xl max-w-2xl">
                 {data?.projectsHeadline || "Infrastructure that"}<br />
                 <span className="text-primary">{data?.projectsHeadlineAccent || "defines regions."}</span>
@@ -232,12 +237,17 @@ const Index = () => {
                 key={p._id}
                 className={`group relative rounded-2xl overflow-hidden border border-border ${i % 3 === 0 ? "md:aspect-[16/10]" : "md:aspect-[16/11]"}`}
               >
-                <img src={imageUrl(p.image, fallbackProjectImgs[i % fallbackProjectImgs.length])} alt={p.title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                <img
+                  src={p.image}
+                  alt={p.title}
+                  loading="lazy"
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
                 <div className="relative h-full min-h-[320px] p-8 flex flex-col justify-end">
                   <div className="flex items-center gap-3 mb-3">
                     {p.tag && <span className="font-mono text-[10px] uppercase tracking-widest text-primary px-3 py-1 rounded-full border border-primary/40">{p.tag}</span>}
-                    {p.year && <span className="font-mono text-[10px] text-muted-foreground">{p.year}</span>}
+                    {p.meta && <span className="font-mono text-[10px] text-muted-foreground">{p.meta}</span>}
                   </div>
                   <h3 className="font-heading font-bold text-2xl md:text-3xl flex items-center gap-3 group-hover:text-primary transition-colors">
                     {p.title}
@@ -258,13 +268,13 @@ const Index = () => {
             <div className="eyebrow mb-6">{data?.whyEyebrow || "Why Bridge Craft"}</div>
             <h2 className="display-heading text-4xl md:text-5xl lg:text-6xl">
               {data?.whyHeadline || "Rigor meets"}<br />
-              <span className="text-primary">{data?.whyHeadlineAccent || "imagination."}</span>
+              <span className="text-primary">{data?.whyHeadlineAccent || "field reality."}</span>
             </h2>
           </div>
 
           <div className="grid sm:grid-cols-2 gap-6">
             {strengths.map((s, i) => {
-              const Icon = getIcon(s.icon, [Shield, HardHat, Building2, Lightbulb][i % 4]);
+              const Icon = getIcon(s.icon);
               return (
                 <div key={i} className="group relative bg-background border border-border rounded-2xl p-8 hover-lift hover:border-primary/40">
                   <div className="flex items-start gap-5">
