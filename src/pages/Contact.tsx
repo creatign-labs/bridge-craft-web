@@ -30,10 +30,11 @@ const Contact = () => {
   const { data: site } = useSanity<SiteData>("siteSettings", siteSettingsQuery);
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
 
-  const address = data?.address || site?.address || "124/1, 2nd Floor, Heera Panna Complex, G N Chetty Road, T Nagar, Chennai 600017, Tamil Nadu";
-  const phone = data?.phone || site?.primaryPhone || "+91 44 49793337";
-  const email = data?.email || site?.primaryEmail || "info@bridgecraft.in";
-  const mapUrl = data?.mapEmbedUrl || "https://www.google.com/maps?q=T+Nagar+Chennai&output=embed";
+  const address = data?.address || site?.address || company.address;
+  const phone = data?.phone || site?.primaryPhone || company.phone;
+  const email = data?.email || site?.primaryEmail || company.email;
+  const mapUrl = data?.mapEmbedUrl || company.mapUrl;
+
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
