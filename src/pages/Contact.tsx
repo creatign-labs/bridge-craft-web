@@ -158,13 +158,15 @@ const Contact = () => {
                 src={mapUrl}
                 width="100%"
                 height="100%"
-                style={{ border: 0, filter: "grayscale(0.4) contrast(1.1) invert(0.9) hue-rotate(180deg)" }}
+                style={{ border: 0 }}
+                className="dark:[filter:grayscale(0.4)_contrast(1.1)_invert(0.9)_hue-rotate(180deg)]"
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Bridge Craft Location"
+                title="Bridge Craft Engineers & Consultants — Chennai head office location"
               />
             </div>
+
           </div>
         </div>
       </section>
