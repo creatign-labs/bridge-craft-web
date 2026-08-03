@@ -3,6 +3,8 @@ import { Plus, Minus, Compass } from "lucide-react";
 import Layout from "@/components/Layout";
 import { useSanity } from "@/hooks/use-sanity";
 import { servicesPageQuery, getIcon } from "@/lib/sanity";
+import { services as companyServices } from "@/data/company";
+
 
 type ServiceDoc = {
   _id: string;
