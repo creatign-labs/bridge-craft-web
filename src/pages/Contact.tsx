@@ -1,9 +1,11 @@
 import { useState, FormEvent } from "react";
-import { MapPin, Phone, Mail, ExternalLink, ArrowUpRight } from "lucide-react";
+import { MapPin, Phone, Mail, ExternalLink, ArrowUpRight, Download } from "lucide-react";
 import Layout from "@/components/Layout";
 import { toast } from "sonner";
 import { useSanity } from "@/hooks/use-sanity";
 import { contactPageQuery, siteSettingsQuery } from "@/lib/sanity";
+import { company } from "@/data/company";
+
 
 type ContactData = {
   eyebrow?: string;
