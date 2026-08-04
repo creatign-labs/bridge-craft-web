@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowUpRight, Download, Target, Flag } from "lucide-react";
+import { ArrowUpRight, Target, Flag } from "lucide-react";
 import Layout from "@/components/Layout";
 import { bcAssets } from "@/assets/bc";
 import {
@@ -42,14 +42,6 @@ const About = () => (
           <p className="font-heading font-bold text-xl text-foreground pt-2">
             We believe that great structures are not just constructed, they are engineered with responsibility.
           </p>
-          <a
-            href={company.profileUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-ghost inline-flex mt-4"
-          >
-            <Download size={16} /> Company Profile 2026
-          </a>
         </div>
         <div className="lg:col-span-5 relative">
           <div className="absolute -inset-4 bg-gradient-primary opacity-10 blur-3xl rounded-full" />

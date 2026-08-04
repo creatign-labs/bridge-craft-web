@@ -156,14 +156,6 @@ const Index = () => {
               <Link to={data?.aboutCtaHref || "/about"} className="inline-flex items-center gap-2 text-primary font-semibold group">
                 {data?.aboutCtaLabel || "Learn more about us"} <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </Link>
-              <a
-                href={company.profileUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
-              >
-                <Download size={15} /> Company Profile 2026
-              </a>
             </div>
           </div>
           <div className="lg:col-span-6 relative">
