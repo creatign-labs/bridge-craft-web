@@ -1,5 +1,9 @@
 import { z } from "npm:zod@3.23.8";
-import { corsHeaders } from "npm:@supabase/supabase-js@2/cors";
+
+const corsHeaders = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+};
 
 const CONSENT_TEXT =
   "I consent to Bridge Craft Engineers & Consultants storing the details I have submitted and contacting me about my enquiry. My details will not be sold or shared with third parties.";
@@ -18,7 +22,7 @@ const bodySchema = z.object({
   loadedAt: z.number(),
 });
 
-export default async (req: Request): Promise<Response> => {
+Deno.serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response("ok", { headers: corsHeaders });
   }
@@ -161,4 +165,4 @@ export default async (req: Request): Promise<Response> => {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   }
-};
+});
