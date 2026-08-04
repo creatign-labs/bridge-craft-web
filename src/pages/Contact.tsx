@@ -1,7 +1,9 @@
-import { useState, FormEvent } from "react";
+import { useState, useRef, FormEvent } from "react";
+import { z } from "zod";
 import { MapPin, Phone, Mail, ArrowUpRight } from "lucide-react";
 import Layout from "@/components/Layout";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 import { useSanity } from "@/hooks/use-sanity";
 import { contactPageQuery, siteSettingsQuery } from "@/lib/sanity";
 import { company } from "@/data/company";
