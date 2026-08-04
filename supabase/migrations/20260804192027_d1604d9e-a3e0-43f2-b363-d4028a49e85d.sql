@@ -1,0 +1,1 @@
+REVOKE EXECUTE ON FUNCTION public.contact_submissions_rate_limit() FROM PUBLIC, anon, authenticated;
