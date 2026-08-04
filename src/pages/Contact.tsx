@@ -25,21 +25,88 @@ type ContactData = {
 };
 type SiteData = { address?: string; primaryPhone?: string; primaryEmail?: string };
 
+const CONSENT_TEXT =
+  "I consent to Bridge Craft Engineers & Consultants storing the details I have submitted and contacting me about my enquiry. My details will not be sold or shared with third parties.";
+
+const contactSchema = z.object({
+  name: z.string().trim().min(2, "Please enter your name").max(100, "Name is too long"),
+  email: z.string().trim().email("Please enter a valid email address").max(255),
+  phone: z.string().trim().max(30, "Phone number is too long").optional().or(z.literal("")),
+  message: z
+    .string()
+    .trim()
+    .min(10, "Please tell us a little more about your project")
+    .max(2000, "Message is too long"),
+});
+
+const COOLDOWN_MS = 60_000;
+const COOLDOWN_KEY = "bc_contact_last_submit";
+
 const Contact = () => {
   const { data } = useSanity<ContactData>("contactPage", contactPageQuery);
   const { data: site } = useSanity<SiteData>("siteSettings", siteSettingsQuery);
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
+  const [consent, setConsent] = useState(false);
+  const [honeypot, setHoneypot] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const mountedAt = useRef(Date.now());
 
   const address = data?.address || site?.address || company.address;
   const phone = data?.phone || site?.primaryPhone || company.phone;
   const email = data?.email || site?.primaryEmail || company.email;
   const mapUrl = data?.mapEmbedUrl || company.mapUrl;
 
-
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    if (submitting) return;
+
+    // Spam traps: hidden field must stay empty, and bots submit almost instantly.
+    if (honeypot.trim() !== "" || Date.now() - mountedAt.current < 3000) {
+      toast.success("Message sent — we'll be in touch shortly.");
+      return;
+    }
+
+    if (!consent) {
+      toast.error("Please accept the data consent notice before sending.");
+      return;
+    }
+
+    const last = Number(localStorage.getItem(COOLDOWN_KEY) || 0);
+    if (Date.now() - last < COOLDOWN_MS) {
+      toast.error("Please wait a minute before sending another enquiry.");
+      return;
+    }
+
+    const parsed = contactSchema.safeParse(form);
+    if (!parsed.success) {
+      toast.error(parsed.error.issues[0].message);
+      return;
+    }
+
+    setSubmitting(true);
+    const { error } = await supabase.from("contact_submissions").insert({
+      name: parsed.data.name,
+      email: parsed.data.email,
+      phone: parsed.data.phone || null,
+      message: parsed.data.message,
+      consent_given: true,
+      consent_text: CONSENT_TEXT,
+    });
+    setSubmitting(false);
+
+    if (error) {
+      toast.error(
+        error.message.includes("rate_limited")
+          ? "Please wait a minute before sending another enquiry."
+          : "Something went wrong. Please try again or email us directly.",
+      );
+      return;
+    }
+
+    localStorage.setItem(COOLDOWN_KEY, String(Date.now()));
     toast.success("Message sent — we'll be in touch shortly.");
     setForm({ name: "", email: "", phone: "", message: "" });
+    setConsent(false);
   };
 
   return (
