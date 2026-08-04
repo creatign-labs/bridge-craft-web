@@ -480,3 +480,75 @@ export const sectors = [
   "Renewable Energy",
   "Structural Retrofitting",
 ];
+
+/** Sector-wise technical credentials, evidenced by executed projects. */
+export const sectorExperience = [
+  {
+    icon: "Waves",
+    sector: "Bridges & Marine Structures",
+    summary:
+      "Detailed design engineering of major marine bridges in creek and island terrain, including deep pile foundations, UHPC superstructures and hydrological studies.",
+    evidence: [
+      "Major bridge over Middle Strait Creek — 16 x 60m spans, 1925m total length (NHIDCL / RKEC Projects Ltd)",
+      "UHPC-M150 superstructure design with 1500/1800mm dia piles up to 50m depth",
+      "Six minor bridges (42m to 12m spans) on the NH-04 corridor",
+    ],
+    image: bcAssets.marineBridgeSite,
+  },
+  {
+    icon: "Compass",
+    sector: "Highways & Road Infrastructure",
+    summary:
+      "Highway alignment, pavement and structural design for national highway corridors, supported by traffic studies and subgrade evaluation.",
+    evidence: [
+      "NH-04 Package IIIB, Jarwa – Rangat: 26 km corridor upgradation",
+      "NH-45C Vikravandi – Sethiyathope: 60 km four-laning geotechnical investigation",
+      "NH-67 Thiruvarur bypass: 14 km alignment investigation",
+    ],
+    image: bcAssets.nh04Corridor,
+  },
+  {
+    icon: "Layers",
+    sector: "Railways",
+    summary:
+      "Investigation and design support for railway bridges and road-over-bridge structures, including river-bed drilling from floating platforms.",
+    evidence: [
+      "Manair River railway bridge — floating-rig river-bed investigation, Telangana",
+      "ROB 129A & ROB 134A on NH-67 — road and water-body investigations",
+    ],
+    image: bcAssets.manairFloatingRig,
+  },
+  {
+    icon: "Gauge",
+    sector: "Solar & Renewable Energy",
+    summary:
+      "Geotechnical and geophysical investigation packages for large-scale solar power installations, including resistivity surveys for earthing design.",
+    evidence: [
+      "350 MW solar power project, Phase 1 & 2 — boreholes and ERT surveys",
+      "Electrical Resistivity Tomography for foundation and earthing parameters",
+    ],
+    image: bcAssets.solarErtSurvey,
+  },
+  {
+    icon: "Building2",
+    sector: "Institutional & Commercial Buildings",
+    summary:
+      "Structural design and soil investigation for government, institutional and commercial building projects with full statutory documentation.",
+    evidence: [
+      "CPWD institutional campus, Gandhigram Rural Institute, Dindigul",
+      "Foundation design based on precise soil analysis and code compliance",
+    ],
+    image: bcAssets.cpwdSiteTeam,
+  },
+  {
+    icon: "HardHat",
+    sector: "Retrofitting & Strengthening",
+    summary:
+      "Assessment, analytical modelling and detailing for the seismic strengthening and rehabilitation of existing structures.",
+    evidence: [
+      "Retrofitting of an existing institutional building, Madurai",
+      "Shear wall modelling, footing strengthening details and layout drawings",
+    ],
+    image: bcAssets.retrofitShearwallModel,
+  },
+];
