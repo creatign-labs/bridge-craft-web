@@ -168,9 +168,33 @@ const Contact = () => {
                 className="w-full bg-transparent border-b border-border py-3 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary transition-colors resize-none"
               />
             </div>
+            {/* Honeypot — hidden from humans, bots fill it in */}
+            <div className="absolute -left-[9999px] top-auto w-px h-px overflow-hidden" aria-hidden="true">
+              <label htmlFor="bc-company-website">Company website</label>
+              <input
+                id="bc-company-website"
+                name="company_website"
+                type="text"
+                tabIndex={-1}
+                autoComplete="off"
+                value={honeypot}
+                onChange={(e) => setHoneypot(e.target.value)}
+              />
+            </div>
+
+            <label className="flex items-start gap-3 pt-2 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={consent}
+                onChange={(e) => setConsent(e.target.checked)}
+                className="mt-1 h-4 w-4 shrink-0 rounded border-border accent-[hsl(var(--primary))]"
+              />
+              <span className="text-xs leading-relaxed text-muted-foreground">{CONSENT_TEXT}</span>
+            </label>
+
             <div className="flex flex-wrap items-center gap-4 pt-4">
-              <button type="submit" className="btn-primary">
-                {data?.submitLabel || "Send message"} <ArrowUpRight size={16} />
+              <button type="submit" className="btn-primary disabled:opacity-60" disabled={submitting || !consent}>
+                {submitting ? "Sending…" : data?.submitLabel || "Send message"} <ArrowUpRight size={16} />
               </button>
             </div>
           </form>
