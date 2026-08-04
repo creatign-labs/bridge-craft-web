@@ -10,6 +10,7 @@ import About from "./pages/About";
 import Projects from "./pages/Projects";
 
 import Services from "./pages/Services";
+import Credentials from "./pages/Credentials";
 import Gallery from "./pages/Gallery";
 import Contact from "./pages/Contact";
 import Terms from "./pages/Terms";
@@ -35,6 +36,7 @@ const AppRoutes = () => (
       <Route path="/projects" element={<Projects />} />
 
       <Route path="/services" element={<Services />} />
+      <Route path="/credentials" element={<Credentials />} />
       <Route path="/gallery" element={<Gallery />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/terms" element={<Terms />} />

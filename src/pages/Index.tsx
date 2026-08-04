@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, ArrowUpRight, ChevronDown, Compass, Building2, HardHat, Waves } from "lucide-react";
+import { ArrowRight, ArrowUpRight, ChevronDown, Download, Compass, Building2, HardHat, Waves } from "lucide-react";
 import Layout from "@/components/Layout";
 import { useSanity } from "@/hooks/use-sanity";
 import { homepageQuery, imageUrl, getIcon } from "@/lib/sanity";
@@ -107,8 +107,11 @@ const Index = () => {
               <Link to={data?.heroPrimaryCta?.href || "/services"} className="btn-primary">
                 {data?.heroPrimaryCta?.label || "Explore services"} <ArrowUpRight size={16} />
               </Link>
-              <Link to={data?.heroSecondaryCta?.href || "/projects"} className="btn-ghost">
-                {data?.heroSecondaryCta?.label || "View projects"}
+              <a href={company.profileUrl} download className="btn-ghost">
+                Download Company Profile <Download size={16} />
+              </a>
+              <Link to="/contact" className="btn-ghost">
+                Contact us
               </Link>
             </div>
           </div>
