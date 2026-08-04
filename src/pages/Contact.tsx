@@ -1,5 +1,5 @@
 import { useState, FormEvent } from "react";
-import { MapPin, Phone, Mail, ExternalLink, ArrowUpRight, Download } from "lucide-react";
+import { MapPin, Phone, Mail, ExternalLink, ArrowUpRight } from "lucide-react";
 import Layout from "@/components/Layout";
 import { toast } from "sonner";
 import { useSanity } from "@/hooks/use-sanity";
@@ -142,14 +142,6 @@ const Contact = () => {
                   </div>
                 </div>
               </div>
-              <a
-                href={company.profileUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm text-primary hover:underline"
-              >
-                <Download size={15} /> Download Company Profile 2026
-              </a>
             </div>
 
 

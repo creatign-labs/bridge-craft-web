@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { MapPin, Phone, Mail, ArrowUpRight, Download } from "lucide-react";
+import { MapPin, Phone, Mail, ArrowUpRight } from "lucide-react";
 import { useSanity } from "@/hooks/use-sanity";
 import { footerQuery, siteSettingsQuery } from "@/lib/sanity";
 import { bcAssets } from "@/assets/bc";
@@ -87,14 +87,6 @@ const Footer = () => {
               {footer?.blurb ||
                 "Engineering Design Consultants specializing in Structural, Geotechnical and Geophysical Engineering — from ground investigation to structural excellence."}
             </p>
-            <a
-              href={company.profileUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-6 inline-flex items-center gap-2 text-sm text-primary hover:underline"
-            >
-              <Download size={15} /> Company Profile 2026 (PDF)
-            </a>
           </div>
 
           <div className="md:col-span-3">
