@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, ArrowUpRight, ChevronDown, Compass, Building2, HardHat, Waves } from "lucide-react";
+import { ArrowRight, ArrowUpRight, ChevronDown, Download, Compass, Building2, HardHat, Waves } from "lucide-react";
 import Layout from "@/components/Layout";
 import { useSanity } from "@/hooks/use-sanity";
 import { homepageQuery, imageUrl, getIcon } from "@/lib/sanity";
