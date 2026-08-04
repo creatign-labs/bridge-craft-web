@@ -85,22 +85,25 @@ const Contact = () => {
     }
 
     setSubmitting(true);
-    const { error } = await supabase.from("contact_submissions").insert({
-      name: parsed.data.name,
-      email: parsed.data.email,
-      phone: parsed.data.phone || null,
-      message: parsed.data.message,
-      consent_given: true,
-      consent_text: CONSENT_TEXT,
+    const baseUrl = import.meta.env.VITE_SUPABASE_URL;
+    const res = await fetch(`${baseUrl}/functions/v1/save-contact-to-sanity`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: parsed.data.name,
+        email: parsed.data.email,
+        phone: parsed.data.phone || "",
+        message: parsed.data.message,
+        consent: true,
+        honeypot,
+        loadedAt: mountedAt.current,
+      }),
     });
     setSubmitting(false);
 
-    if (error) {
-      toast.error(
-        error.message.includes("rate_limited")
-          ? "Please wait a minute before sending another enquiry."
-          : "Something went wrong. Please try again or email us directly.",
-      );
+    if (!res.ok) {
+      const body = await res.json().catch(() => ({ error: "Something went wrong. Please try again or email us directly." }));
+      toast.error(body.error || "Something went wrong. Please try again or email us directly.");
       return;
     }
 
