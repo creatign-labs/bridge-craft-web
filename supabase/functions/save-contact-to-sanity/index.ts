@@ -1,4 +1,3 @@
-import { createClient } from "npm:@sanity/client@7.24.0";
 import { z } from "npm:zod@3.23.8";
 import { corsHeaders } from "npm:@supabase/supabase-js@2/cors";
 
@@ -86,41 +85,70 @@ export default async (req: Request): Promise<Response> => {
       });
     }
 
-    const sanity = createClient({
-      projectId,
-      dataset,
-      token,
-      apiVersion: "2024-06-01",
-      useCdn: false,
-    });
-
     const lowerEmail = email.toLowerCase();
     const since = new Date(Date.now() - 60_000).toISOString();
-
-    const recent = await sanity.fetch(
-      `*[_type == "contactSubmission" && lower(email) == $email && submittedAt > $since][0]._id`,
-      { email: lowerEmail, since },
+    const query = encodeURIComponent(
+      `*[_type == "contactSubmission" && lower(email) == "${lowerEmail}" && submittedAt > "${since}"][0]._id`,
     );
 
-    if (recent) {
-      return new Response(JSON.stringify({ error: "Please wait a minute before sending another enquiry." }), {
-        status: 429,
+    const recentRes = await fetch(
+      `https://${projectId}.api.sanity.io/v2024-06-01/data/query/${dataset}?query=${query}`,
+      {
+        method: "GET",
+        headers: { Authorization: `Bearer ${token}` },
+      },
+    );
+
+    if (!recentRes.ok) {
+      const recentText = await recentRes.text();
+      console.error("Sanity rate-limit query failed:", recentRes.status, recentText);
+    } else {
+      const recent = await recentRes.json().catch(() => ({ result: null }));
+      if (recent.result) {
+        return new Response(JSON.stringify({ error: "Please wait a minute before sending another enquiry." }), {
+          status: 429,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+    }
+
+    const createRes = await fetch(
+      `https://${projectId}.api.sanity.io/v2024-06-01/data/mutate/${dataset}`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          mutations: [
+            {
+              create: {
+                _type: "contactSubmission",
+                name,
+                email: lowerEmail,
+                phone: phone || "",
+                message,
+                consentGiven: true,
+                consentText: CONSENT_TEXT,
+                status: "new",
+                submittedAt: new Date().toISOString(),
+                source: "website",
+              },
+            },
+          ],
+        }),
+      },
+    );
+
+    if (!createRes.ok) {
+      const createText = await createRes.text();
+      console.error("Sanity create failed:", createRes.status, createText);
+      return new Response(JSON.stringify({ error: "Something went wrong. Please try again or email us directly." }), {
+        status: 500,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
-
-    await sanity.create({
-      _type: "contactSubmission",
-      name,
-      email: lowerEmail,
-      phone: phone || "",
-      message,
-      consentGiven: true,
-      consentText: CONSENT_TEXT,
-      status: "new",
-      submittedAt: new Date().toISOString(),
-      source: "website",
-    });
 
     return new Response(JSON.stringify({ ok: true }), {
       status: 200,
