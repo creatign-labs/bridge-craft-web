@@ -42,7 +42,9 @@ const AppRoutes = () => (
       <Route path="/contact" element={<Contact />} />
       <Route path="/terms" element={<Terms />} />
       <Route path="/privacy" element={<Privacy />} />
+      <Route path="/admin/leads" element={<AdminLeads />} />
       <Route path="*" element={<NotFound />} />
+
     </Routes>
   </>
 );
