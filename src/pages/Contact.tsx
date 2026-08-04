@@ -127,7 +127,7 @@ const Contact = () => {
 
       <section className="px-6 sm:px-8 lg:px-16 pb-24 reveal">
         <div className="container-narrow grid lg:grid-cols-12 gap-10">
-          <form onSubmit={handleSubmit} className="relative lg:col-span-7 space-y-6 bg-card/40 border border-border rounded-3xl p-8 md:p-10">ic
+          <form onSubmit={handleSubmit} className="relative lg:col-span-7 space-y-6 bg-card/40 border border-border rounded-3xl p-8 md:p-10">
             <div className="grid sm:grid-cols-2 gap-6">
               {[
                 { name: "name" as const, label: "Full name", type: "text", ph: "Jane Doe" },
