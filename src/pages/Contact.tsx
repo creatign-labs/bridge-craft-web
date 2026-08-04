@@ -1,5 +1,5 @@
 import { useState, FormEvent } from "react";
-import { MapPin, Phone, Mail, ExternalLink, ArrowUpRight } from "lucide-react";
+import { MapPin, Phone, Mail, ArrowUpRight } from "lucide-react";
 import Layout from "@/components/Layout";
 import { toast } from "sonner";
 import { useSanity } from "@/hooks/use-sanity";
@@ -103,16 +103,6 @@ const Contact = () => {
               <button type="submit" className="btn-primary">
                 {data?.submitLabel || "Send message"} <ArrowUpRight size={16} />
               </button>
-              {data?.externalFormUrl && (
-                <a
-                  href={data.externalFormUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
-                >
-                  {data.externalFormLabel || "Or use our Google Form"} <ExternalLink size={14} />
-                </a>
-              )}
             </div>
           </form>
 
