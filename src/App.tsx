@@ -10,6 +10,7 @@ import About from "./pages/About";
 import Projects from "./pages/Projects";
 
 import Services from "./pages/Services";
+import Credentials from "./pages/Credentials";
 import Gallery from "./pages/Gallery";
 import Contact from "./pages/Contact";
 import Terms from "./pages/Terms";
