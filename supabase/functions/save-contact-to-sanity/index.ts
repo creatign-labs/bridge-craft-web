@@ -77,7 +77,7 @@ Deno.serve(async (req) => {
       });
     }
 
-    const token = Deno.env.get("SANITY_API_TOKEN");
+    const token = Deno.env.get("SANITY_API_TOKEN_WRITE") || Deno.env.get("SANITY_API_TOKEN");
     const projectId = Deno.env.get("SANITY_PROJECT_ID") || "n5ypw1x0";
     const dataset = Deno.env.get("SANITY_DATASET") || "production";
 
