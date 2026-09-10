@@ -20,6 +20,7 @@ const bodySchema = z.object({
   consent: z.boolean(),
   honeypot: z.string().optional(),
   loadedAt: z.number(),
+  source: z.string().trim().max(40).optional(),
 });
 
 Deno.serve(async (req) => {
@@ -52,7 +53,7 @@ Deno.serve(async (req) => {
       });
     }
 
-    const { name, email, phone, message, consent, honeypot, loadedAt } = parsed.data;
+    const { name, email, phone, message, consent, honeypot, loadedAt, source } = parsed.data;
 
     // Honeypot: silently accept but do nothing if a bot fills the hidden field.
     if (honeypot && honeypot.trim() !== "") {
@@ -137,10 +138,7 @@ Deno.serve(async (req) => {
                 consentText: CONSENT_TEXT,
                 status: "new",
                 submittedAt: new Date().toISOString(),
-                source: (typeof body?.source === "string" ? body.source : "")
-                  .trim()
-                  .slice(0, 40)
-                  .replace(/[^a-zA-Z0-9 _-]/g, "") || "website",
+                source: (source || "").replace(/[^a-zA-Z0-9 _-]/g, "") || "website",
               },
             },
           ],
