@@ -87,6 +87,7 @@ export const homepageQuery = `*[_type == "homepage"][0]{
   heroEyebrow, heroHeadline, heroHeadlineAccent, heroSubheadline, heroImage,
   heroPrimaryCta, heroSecondaryCta,
   stats,
+  "homeStats": *[_type == "homeStats"][0]{intro, stats[]{value, label}},
   aboutEyebrow, aboutHeadline, aboutHeadlineAccent, aboutBody, aboutValues, aboutImage, aboutCtaLabel, aboutCtaHref,
   servicesEyebrow, servicesHeadline, servicesHeadlineAccent,
   "featuredServices": featuredServices[]->{_id, number, title, shortDescription, icon},
