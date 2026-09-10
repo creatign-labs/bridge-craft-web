@@ -599,6 +599,7 @@ export const sectorExperience = [
       "NH-04 Package IIIB, Jarwa – Rangat: 26 km corridor upgradation",
       "NH-45C Vikravandi – Sethiyathope: 60 km four-laning geotechnical investigation",
       "NH-67 Thiruvarur bypass: 14 km alignment investigation",
+      "ECR four-lane elevated corridor, Thiruvanmiyur – Uthandi: 150 boreholes (TANSHA / KNRCL)",
     ],
     image: bcAssets.nh04Corridor,
   },
@@ -631,7 +632,8 @@ export const sectorExperience = [
       "Structural design and soil investigation for government, institutional and commercial building projects with full statutory documentation.",
     evidence: [
       "CPWD institutional campus, Gandhigram Rural Institute, Dindigul",
-      "Foundation design based on precise soil analysis and code compliance",
+      "Punjab National Bank building, Amaravathi — CPWD Vijayawada",
+      "Mixed-use high-rise on Lattice Bridge Road, Chennai — BBCL",
     ],
     image: bcAssets.cpwdSiteTeam,
   },
@@ -643,6 +645,7 @@ export const sectorExperience = [
     evidence: [
       "Retrofitting of an existing institutional building, Madurai",
       "Shear wall modelling, footing strengthening details and layout drawings",
+      "Multipurpose Berths 1 & 2, Cuddalore Port — capacity check and strengthening proposals (Tamil Nadu Maritime Board)",
     ],
     image: bcAssets.retrofitShearwallModel,
   },
