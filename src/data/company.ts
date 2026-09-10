@@ -421,7 +421,7 @@ export const projects: ProjectRecord[] = [
     number: "10",
     title: "Retrofitting of Existing Institutional Building – Madurai",
     heading: "Structural Assessment & Retrofitting of Existing Building",
-    tag: "Structural",
+    tag: "Retrofitting",
     client: "Crescent B.Ed. Women's College",
     location: "Madurai, Tamil Nadu",
     scope:
@@ -442,6 +442,100 @@ export const projects: ProjectRecord[] = [
       bcAssets.retrofitFootingDetail,
       bcAssets.retrofitFootingLayout,
     ],
+  },
+  {
+    _id: "prj-11",
+    number: "11",
+    title: "Rehabilitation & Strengthening – Cuddalore Multipurpose Berths 1 & 2",
+    heading:
+      "Design & Engineering Services – Structural Capacity Check, Rehabilitation and Strengthening of Berths 1 & 2",
+    tag: "Retrofitting",
+    value: "₹13.5L",
+    client: "Mahathi Infra Services Pvt Ltd (EPC Contractor)",
+    authority: "Tamil Nadu Maritime Board",
+    location: "Cuddalore Port, Tamil Nadu",
+    scope:
+      "Review of existing designs, Design Basis Report, detailed structural analysis, adequacy checks, rehabilitation and strengthening proposals, detailed drawings and coordination with the Independent Engineer / IIT Madras.",
+    summary:
+      "Structural capacity assessment of existing multipurpose berths for a deepened dredge level and larger vessels, with rehabilitation and strengthening proposals for the berthing elements.",
+    highlights: [
+      "Checked for 40,000 DWT vessels",
+      "Dredge level (-)15.000 CD",
+      "Design Basis Report and adequacy checks",
+      "Rehabilitation and strengthening proposals",
+      "Coordination with IE / IIT Madras",
+      "Site assessment of existing berth structures",
+    ],
+    image: bcAssets.retrofitFootingDetail,
+    gallery: [bcAssets.retrofitFootingDetail, bcAssets.retrofitFootingLayout],
+  },
+  {
+    _id: "prj-12",
+    number: "12",
+    title: "Four-Lane Elevated Corridor – East Coast Road (ECR)",
+    heading:
+      "Geotechnical Investigations – Thiruvanmiyur to Uthandi Elevated Corridor on SH-4 (HAM)",
+    tag: "Highways",
+    value: "₹90L",
+    client: "M/s KNRCL, Hyderabad (HAM Operator)",
+    authority: "Tamil Nadu State Highways Authority (TANSHA)",
+    location: "Thiruvanmiyur – Uthandi, Tamil Nadu",
+    scope:
+      "150 standard soil investigation boreholes up to 30m, drilling in soil and rock, laboratory testing of soil and rock cores, and reporting with foundation recommendations for piers and abutments.",
+    summary:
+      "Large-scale subsurface investigation programme for a four-lane elevated corridor along the East Coast Road under the Hybrid Annuity Mode.",
+    highlights: [
+      "150 boreholes up to 30m depth",
+      "Approximately 5m rock drilling per location",
+      "Chainage Km 11+480 to Km 24+780",
+      "Laboratory tests on soil and rock cores",
+      "Foundation recommendations for piers and abutments",
+    ],
+    image: bcAssets.nh45cDrilling,
+  },
+  {
+    _id: "prj-13",
+    number: "13",
+    title: "Punjab National Bank Building – Amaravathi",
+    heading: "Soil Investigation – Institutional Building, Two Basements + 6 Floors",
+    tag: "Institutional",
+    value: "₹1.42L",
+    client: "Executive Engineer, CPWD Vijayawada",
+    authority: "Central Public Works Department",
+    location: "Amaravathi, Guntur District, Andhra Pradesh",
+    scope:
+      "Three standard soil investigation boreholes up to 30m, laboratory testing and reporting with foundation recommendations.",
+    summary:
+      "Geotechnical investigation for a two-basement plus six-floor institutional bank building under CPWD norms.",
+    highlights: [
+      "3 boreholes up to 30m",
+      "Two basements + 6 floors",
+      "Laboratory testing programme",
+      "Foundation design recommendations",
+    ],
+    image: bcAssets.cpwdSiteTeam,
+  },
+  {
+    _id: "prj-14",
+    number: "14",
+    title: "Mixed-Use High-Rise – Lattice Bridge Road, Chennai",
+    heading: "Soil Investigation – Multi-Storied Mixed Use Framed Structure",
+    tag: "Commercial",
+    value: "₹1.69L",
+    client: "M/s BBCL, A Vummidi Enterprise",
+    authority: "Architects: ED + Architecture, Chennai",
+    location: "Thiruvanmiyur, Chennai, Tamil Nadu",
+    scope:
+      "Three standard soil investigation boreholes up to 15–20m through soil and rock strata, laboratory tests and reporting with foundation recommendations.",
+    summary:
+      "Geotechnical investigation for a mixed-use development with two basements of varying depths, ground floor plus ten floors and terrace.",
+    highlights: [
+      "3 boreholes, 15–20m depth",
+      "Drilling in soil and rock strata",
+      "Two basements + G+10 + terrace",
+      "Foundation recommendations",
+    ],
+    image: bcAssets.bridgeCrossSection,
   },
 ];
 
