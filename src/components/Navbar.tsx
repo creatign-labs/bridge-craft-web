@@ -63,17 +63,15 @@ const Navbar = () => {
             aria-hidden="true"
             className="h-8 w-auto dark:hidden transition-transform group-hover:scale-105"
           />
-          <div className="leading-tight">
-            <div className="font-heading font-bold text-foreground text-[11px] sm:text-sm tracking-tight uppercase">
-              {shortName}
+          <div className="leading-tight max-w-[150px] sm:max-w-none">
+            <div className="font-heading font-bold text-foreground text-[10px] sm:text-sm tracking-tight uppercase">
+              {shortName} {tagline}
             </div>
-            <div className="font-heading font-bold text-foreground text-[11px] sm:text-sm tracking-tight uppercase">
-              {tagline}
-            </div>
-            <div className="font-mono text-[8px] sm:text-[9px] text-muted-foreground uppercase tracking-[0.18em] mt-0.5">
+            <div className="hidden sm:block font-mono text-[9px] text-muted-foreground uppercase tracking-[0.18em] mt-0.5">
               {company.descriptor}
             </div>
           </div>
+
 
         </Link>
 
