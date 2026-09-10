@@ -34,7 +34,7 @@ const Navbar = () => {
   const ctaLabel = nav?.ctaLabel || "Contact us";
   const ctaHref = nav?.ctaHref || "/contact";
   const shortName = site?.shortName || company.shortName;
-  const tagline = site?.tagline || "Engineers & Consultants";
+  const tagline = site?.tagline || company.tagline;
 
 
   useEffect(() => {
@@ -66,7 +66,7 @@ const Navbar = () => {
           <div className="hidden sm:block leading-tight">
             <div className="font-heading font-bold text-foreground text-sm tracking-tight">{shortName}</div>
             <div className="font-mono text-[9px] text-muted-foreground uppercase tracking-[0.2em]">{tagline}</div>
-            <div className="font-mono text-[9px] text-muted-foreground uppercase tracking-[0.2em]">{company.descriptor}</div>
+            <div className="font-mono text-[9px] text-muted-foreground uppercase tracking-[0.2em] whitespace-nowrap">{company.descriptor}</div>
           </div>
         </Link>
 
