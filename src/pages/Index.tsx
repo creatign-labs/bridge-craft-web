@@ -91,9 +91,6 @@ const Index = () => {
 
         <div className="relative z-10 container-narrow px-6 sm:px-8 lg:px-16 w-full pt-32 pb-24">
           <div className="animate-fade-in-up">
-            <div className="eyebrow mb-8">
-              <span>{data?.heroEyebrow || "CHENNAI · STRUCTURAL · GEOTECHNICAL · GEOPHYSICAL"}</span>
-            </div>
             <h1 className="display-heading text-6xl md:text-8xl lg:text-9xl max-w-5xl">
               {data?.heroHeadline || "Engineering"}
               <br />
