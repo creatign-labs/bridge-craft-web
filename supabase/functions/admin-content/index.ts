@@ -36,8 +36,8 @@ Deno.serve(async (req) => {
     if (action === "get") {
       const groq = encodeURIComponent(`{
         "homeStats": *[_type == "homeStats"][0]{_id, intro, stats[]{value, label}},
-        "services": *[_type == "service"] | order(number asc){_id, number, title, shortDescription, bullets},
-        "projects": *[_type == "project"] | order(order asc, year desc){_id, title, tag, year, client, location, summary},
+        "services": *[_type == "service" && !(_id in path("drafts.**"))] | order(number asc){_id, number, title, shortDescription, bullets},
+        "projects": *[_type == "project" && !(_id in path("drafts.**"))] | order(order asc, year desc){_id, title, tag, year, client, location, summary},
         "settings": *[_type == "siteSettings"][0]{_id, primaryPhone, primaryEmail, address, mapEmbedUrl}
       }`);
       const res = await fetch(`${apiBase}/query/${dataset}?query=${groq}`, { headers: auth });
@@ -53,7 +53,7 @@ Deno.serve(async (req) => {
       const id = str(body?.id, 200);
       const kind = str(body?.kind, 40);
       const v = body?.values ?? {};
-      if (!id || !kind) return json({ error: "Invalid input" }, 400);
+      if (!id || id.startsWith("drafts.") || !kind) return json({ error: "Invalid input" }, 400);
 
       let set: Record<string, unknown> = {};
       if (kind === "homeStats") {
