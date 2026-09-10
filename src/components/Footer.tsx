@@ -77,10 +77,13 @@ const Footer = () => {
             <div className="flex items-center gap-3 mb-6">
               <img src={bcAssets.logoMark} alt="" aria-hidden="true" className="h-8 w-auto hidden dark:block" />
               <img src={bcAssets.logoMarkDark} alt="" aria-hidden="true" className="h-8 w-auto dark:hidden" />
-              <div>
+              <div className="leading-tight">
                 <div className="font-heading font-bold text-sm">{site?.shortName || company.shortName}</div>
                 <div className="font-mono text-[9px] text-muted-foreground uppercase tracking-[0.2em]">
-                  {site?.tagline || "Engineers & Consultants"}
+                  {site?.tagline || company.tagline}
+                </div>
+                <div className="font-mono text-[9px] text-muted-foreground uppercase tracking-[0.2em]">
+                  {company.descriptor}
                 </div>
               </div>
             </div>

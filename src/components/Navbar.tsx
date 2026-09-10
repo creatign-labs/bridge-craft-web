@@ -66,6 +66,7 @@ const Navbar = () => {
           <div className="hidden sm:block leading-tight">
             <div className="font-heading font-bold text-foreground text-sm tracking-tight">{shortName}</div>
             <div className="font-mono text-[9px] text-muted-foreground uppercase tracking-[0.2em]">{tagline}</div>
+            <div className="font-mono text-[9px] text-muted-foreground uppercase tracking-[0.2em]">{company.descriptor}</div>
           </div>
         </Link>
 

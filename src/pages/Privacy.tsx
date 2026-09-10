@@ -6,7 +6,7 @@ const sections = [
   { title: "Cookies", content: "Our website uses cookies to enhance your browsing experience. Cookies are small data files stored on your device that help us understand how you use our site. You can control cookie settings through your browser preferences." },
   { title: "Data Security", content: "We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of electronic transmission or storage is 100% secure." },
   { title: "Third-Party Links", content: "Our website may contain links to third-party websites. We are not responsible for the privacy practices or content of these external sites." },
-  { title: "Contact Information", content: "For questions about this Privacy Policy, contact us at: Bridge Craft Engineers & Consultants, 124/1, 2nd Floor, Heera Panna Complex, G N Chetty Road, T Nagar, Chennai 600017. Phone: +91 44 49793337." },
+  { title: "Contact Information", content: "For questions about this Privacy Policy, contact us at: Bridge Craft Engineers & Consultants, 3rd Floor, Parsn Manere, 'C' Wing, New No.442, Anna Salai, Mount Road, Chennai – 600006. Phone: +91 9445435322." },
 ];
 
 const Privacy = () => (

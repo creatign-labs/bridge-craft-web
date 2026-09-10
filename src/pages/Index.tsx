@@ -10,9 +10,7 @@ import {
   introParagraphs,
   services as companyServices,
   projects as companyProjects,
-  stats as companyStats,
   sectors as companySectors,
-  values as companyValues,
   whyChooseUs,
 } from "@/data/company";
 
@@ -55,11 +53,9 @@ const featuredProjectFallback = companyProjects.slice(0, 4);
 const Index = () => {
   const { data } = useSanity<Homepage>("homepage", homepageQuery);
 
-  const stats = data?.stats?.length ? data.stats : companyStats;
   const services = data?.featuredServices?.length ? data.featuredServices : companyServices;
   const strengths = data?.strengths?.length ? data.strengths : whyChooseUs.slice(0, 4);
   const sectors = data?.sectors?.length ? data.sectors : companySectors;
-  const values = data?.aboutValues?.length ? data.aboutValues : companyValues.map((v) => v.title).slice(0, 3);
 
   const projects = data?.featuredProjects?.length
     ? data.featuredProjects.map((p, i) => ({
