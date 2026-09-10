@@ -78,14 +78,15 @@ const Footer = () => {
               <img src={bcAssets.logoMark} alt="" aria-hidden="true" className="h-8 w-auto hidden dark:block" />
               <img src={bcAssets.logoMarkDark} alt="" aria-hidden="true" className="h-8 w-auto dark:hidden" />
               <div className="leading-tight">
-                <div className="font-heading font-bold text-sm">{site?.shortName || company.shortName}</div>
-                <div className="font-mono text-[9px] text-muted-foreground uppercase tracking-[0.2em]">
+                <div className="font-heading font-bold text-sm uppercase tracking-tight">{site?.shortName || company.shortName}</div>
+                <div className="font-heading font-bold text-sm uppercase tracking-tight">
                   {site?.tagline || company.tagline}
                 </div>
-                <div className="font-mono text-[9px] text-muted-foreground uppercase tracking-[0.2em]">
+                <div className="font-mono text-[9px] text-muted-foreground uppercase tracking-[0.18em] mt-0.5">
                   {company.descriptor}
                 </div>
               </div>
+
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed max-w-md">
               {footer?.blurb ||
