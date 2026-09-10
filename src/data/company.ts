@@ -9,10 +9,11 @@ export const company = {
   name: "Bridge Craft Engineers & Consultants",
   shortName: "BRIDGE CRAFT",
   tagline: "ENGINEERS AND CONSULTANT",
+  descriptor: "CIVIL & INFRASTRUCTURE DESIGN CONSULTANCY",
   strapline: "From Ground Investigation to Structural Excellence",
   address:
-    "Flat No.8, 3rd Floor, Parsn Manere, 'C' Wing, New No.442, Anna Salai, Mount Road, Chennai – 600006",
-  phone: "9988776655",
+    "3rd Floor, Parsn Manere, 'C' Wing, New No.442, Anna Salai, Mount Road, Chennai – 600006",
+  phone: "+91 9445435322",
   email: "info@bridgecraft.in",
   website: "bridgecraft.in",
   mapUrl:
@@ -367,8 +368,8 @@ export const projects: ProjectRecord[] = [
       "Liquefaction studies",
       "Foundation capacity evaluation",
     ],
-    image: bcAssets.manairFloatingRig,
-    gallery: [bcAssets.manairFloatingRig, bcAssets.manairCorridorMap],
+    image: bcAssets.manairCorridorMap,
+    gallery: [bcAssets.manairCorridorMap, bcAssets.manairFloatingRig],
   },
   {
     _id: "prj-08",
