@@ -121,10 +121,10 @@ const Index = () => {
       <section className="py-16 border-b border-border reveal">
         <div className="container-narrow text-center">
           <p className="text-muted-foreground text-sm md:text-base mb-10">
-            Growing rapidly through proven project experience since 2024
+            {data?.homeStats?.intro ?? "Growing rapidly through proven project experience since 2024"}
           </p>
           <div className="grid sm:grid-cols-3 gap-8 md:gap-12">
-            {(data?.stats ?? [
+            {(data?.homeStats?.stats?.length ? data.homeStats.stats : data?.stats ?? [
               { value: "15+", label: "Project Assignments" },
               { value: "200+", label: "Boreholes Investigated" },
               { value: "10+", label: "Project Locations Across India" },
