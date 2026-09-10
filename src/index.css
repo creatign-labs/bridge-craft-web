@@ -68,7 +68,7 @@
   }
 
   :root.light {
-    /* Light editorial palette — high contrast, legible */
+    /* Light editorial palette - high contrast, legible */
     --background: 210 33% 98%;
     --foreground: 216 65% 10%;
 

@@ -382,16 +382,16 @@ export const projects: ProjectRecord[] = [
     authority: "Private Utility-Scale Renewable Developer",
     location: "India",
     scope:
-      "Boreholes, trial pits, Electrical Resistivity Testing, soil classification and reporting — 22 boreholes, 12 trial pits and plant-wide resistivity surveys.",
+      "Boreholes, trial pits, Electrical Resistivity Testing, soil classification and reporting - 22 boreholes, 12 trial pits and plant-wide resistivity surveys.",
     summary:
       "Subsurface investigations for foundation and earthing design of a utility-scale solar power plant, expanded across two phases.",
     highlights: [
-      "Phase 1 — 350 MW capacity",
-      "Phase 1 — Boreholes, trial pits and ERT surveys",
-      "Phase 1 — Integrated geotechnical reporting",
-      "Phase 2 — 22 boreholes and 12 trial pits",
-      "Phase 2 — IS 3043 compliant ERT",
-      "Phase 2 — Foundation & earthing design inputs",
+      "Phase 1 - 350 MW capacity",
+      "Phase 1 - Boreholes, trial pits and ERT surveys",
+      "Phase 1 - Integrated geotechnical reporting",
+      "Phase 2 - 22 boreholes and 12 trial pits",
+      "Phase 2 - IS 3043 compliant ERT",
+      "Phase 2 - Foundation & earthing design inputs",
     ],
     image: bcAssets.solarErtSurvey,
     gallery: [bcAssets.solarErtSurvey, bcAssets.solarBorehole],
@@ -584,7 +584,7 @@ export const sectorExperience = [
     summary:
       "Detailed design engineering of major marine bridges in creek and island terrain, including deep pile foundations, UHPC superstructures and hydrological studies.",
     evidence: [
-      "Major bridge over Middle Strait Creek — 16 x 60m spans, 1925m total length (NHIDCL / RKEC Projects Ltd)",
+      "Major bridge over Middle Strait Creek - 16 x 60m spans, 1925m total length (NHIDCL / RKEC Projects Ltd)",
       "UHPC-M150 superstructure design with 1500/1800mm dia piles up to 50m depth",
       "Six minor bridges (42m to 12m spans) on the NH-04 corridor",
     ],
@@ -609,8 +609,8 @@ export const sectorExperience = [
     summary:
       "Investigation and design support for railway bridges and road-over-bridge structures, including river-bed drilling from floating platforms.",
     evidence: [
-      "Manair River railway bridge — floating-rig river-bed investigation, Telangana",
-      "ROB 129A & ROB 134A on NH-67 — road and water-body investigations",
+      "Manair River railway bridge - floating-rig river-bed investigation, Telangana",
+      "ROB 129A & ROB 134A on NH-67 - road and water-body investigations",
     ],
     image: bcAssets.manairFloatingRig,
   },
@@ -620,7 +620,7 @@ export const sectorExperience = [
     summary:
       "Geotechnical and geophysical investigation packages for large-scale solar power installations, including resistivity surveys for earthing design.",
     evidence: [
-      "350 MW solar power project, Phase 1 & 2 — boreholes and ERT surveys",
+      "350 MW solar power project, Phase 1 & 2 - boreholes and ERT surveys",
       "Electrical Resistivity Tomography for foundation and earthing parameters",
     ],
     image: bcAssets.solarErtSurvey,
@@ -632,8 +632,8 @@ export const sectorExperience = [
       "Structural design and soil investigation for government, institutional and commercial building projects with full statutory documentation.",
     evidence: [
       "CPWD institutional campus, Gandhigram Rural Institute, Dindigul",
-      "Punjab National Bank building, Amaravathi — CPWD Vijayawada",
-      "Mixed-use high-rise on Lattice Bridge Road, Chennai — BBCL",
+      "Punjab National Bank building, Amaravathi - CPWD Vijayawada",
+      "Mixed-use high-rise on Lattice Bridge Road, Chennai - BBCL",
     ],
     image: bcAssets.cpwdSiteTeam,
   },
@@ -645,7 +645,7 @@ export const sectorExperience = [
     evidence: [
       "Retrofitting of an existing institutional building, Madurai",
       "Shear wall modelling, footing strengthening details and layout drawings",
-      "Multipurpose Berths 1 & 2, Cuddalore Port — capacity check and strengthening proposals (Tamil Nadu Maritime Board)",
+      "Multipurpose Berths 1 & 2, Cuddalore Port - capacity check and strengthening proposals (Tamil Nadu Maritime Board)",
     ],
     image: bcAssets.retrofitShearwallModel,
   },

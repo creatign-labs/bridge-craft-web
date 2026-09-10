@@ -95,7 +95,7 @@ const Index = () => {
             </h1>
             <p className="mt-8 text-lg md:text-xl text-foreground/70 max-w-xl leading-relaxed">
               {data?.heroSubheadline ||
-                "From ground investigation to structural excellence — technically sound, economically optimized and execution-ready engineering solutions."}
+                "From ground investigation to structural excellence - technically sound, economically optimized and execution-ready engineering solutions."}
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
               <Link to={data?.heroPrimaryCta?.href || "/services"} className="btn-primary">
