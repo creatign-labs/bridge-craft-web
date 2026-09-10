@@ -235,9 +235,9 @@ const AdminLeads = () => {
                     className="border-b border-border/60 last:border-0 hover:bg-primary/5 cursor-pointer"
                   >
                     <td className="px-5 py-4 whitespace-nowrap text-muted-foreground">
-                      {l.submittedAt ? new Date(l.submittedAt).toLocaleDateString() : "—"}
+                      {l.submittedAt ? new Date(l.submittedAt).toLocaleDateString() : "-"}
                     </td>
-                    <td className="px-5 py-4 font-medium">{l.name || "—"}</td>
+                    <td className="px-5 py-4 font-medium">{l.name || "-"}</td>
                     <td className="px-5 py-4">
                       <a
                         href={`mailto:${l.email}`}
@@ -247,7 +247,7 @@ const AdminLeads = () => {
                         {l.email}
                       </a>
                     </td>
-                    <td className="px-5 py-4 whitespace-nowrap">{l.phone || "—"}</td>
+                    <td className="px-5 py-4 whitespace-nowrap">{l.phone || "-"}</td>
                     <td className="px-5 py-4 max-w-xs truncate text-muted-foreground">{l.message}</td>
                     <td className="px-5 py-4" onClick={(e) => e.stopPropagation()}>
                       <select
@@ -287,7 +287,7 @@ const AdminLeads = () => {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="eyebrow mb-3">
-              {open.submittedAt ? new Date(open.submittedAt).toLocaleString() : "—"}
+              {open.submittedAt ? new Date(open.submittedAt).toLocaleString() : "-"}
             </div>
             <h2 className="display-heading text-2xl mb-1">{open.name}</h2>
             <p className="text-sm text-muted-foreground">

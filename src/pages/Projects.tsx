@@ -62,7 +62,7 @@ const Projects = () => {
           </h1>
           <p className="mt-8 text-muted-foreground max-w-xl text-lg animate-fade-in-up animation-delay-200">
             Marine bridges, national highway corridors, railway structures and utility-scale
-            investigations — delivered for NHIDCL, NHAI, South Central Railway and CPWD assignments.
+            investigations - delivered for NHIDCL, NHAI, South Central Railway and CPWD assignments.
           </p>
         </div>
       </section>

@@ -49,7 +49,7 @@ const Footer = () => {
         { label: "Privacy", href: "/privacy" },
       ];
 
-  const copyright = (footer?.copyright || "© {year} BRIDGE CRAFT ENGINEERS & CONSULTANTS — ALL RIGHTS RESERVED")
+  const copyright = (footer?.copyright || "© {year} BRIDGE CRAFT ENGINEERS & CONSULTANTS - ALL RIGHTS RESERVED")
     .replace("{year}", String(new Date().getFullYear()));
 
   return (
@@ -89,7 +89,7 @@ const Footer = () => {
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed max-w-md">
               {footer?.blurb ||
-                "Engineering Design Consultants specializing in Structural, Geotechnical and Geophysical Engineering — from ground investigation to structural excellence."}
+                "Engineering Design Consultants specializing in Structural, Geotechnical and Geophysical Engineering - from ground investigation to structural excellence."}
             </p>
           </div>
 

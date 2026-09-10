@@ -15,7 +15,7 @@ const Credentials = () => (
         </h1>
         <p className="mt-8 text-muted-foreground max-w-2xl text-lg animate-fade-in-up animation-delay-200">
           Highways, bridges, railways, solar installations, institutional buildings and structural
-          retrofitting — each credential below is evidenced by executed Bridge Craft assignments.
+          retrofitting - each credential below is evidenced by executed Bridge Craft assignments.
         </p>
         <div className="mt-10 flex flex-wrap gap-4 animate-fade-in-up animation-delay-300">
           <a href={company.profileUrl} download className="btn-primary">
@@ -37,7 +37,7 @@ const Credentials = () => (
               <div className="aspect-[16/9] overflow-hidden">
                 <img
                   src={s.image}
-                  alt={`${s.sector} — Bridge Craft project photograph`}
+                  alt={`${s.sector} - Bridge Craft project photograph`}
                   loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
@@ -78,7 +78,7 @@ const Credentials = () => (
             Company Profile 2026 (PDF) <Download size={16} />
           </a>
           <span className="inline-flex items-center gap-2 rounded-full border border-dashed border-border px-5 py-3 text-sm text-muted-foreground">
-            <FileText size={16} /> Project Experience list — available on request
+            <FileText size={16} /> Project Experience list - available on request
           </span>
         </div>
       </div>

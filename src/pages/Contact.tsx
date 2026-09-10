@@ -63,7 +63,7 @@ const Contact = () => {
 
     // Spam traps: hidden field must stay empty, and bots submit almost instantly.
     if (honeypot.trim() !== "" || Date.now() - mountedAt.current < 3000) {
-      toast.success("Message sent — we'll be in touch shortly.");
+      toast.success("Message sent - we'll be in touch shortly.");
       return;
     }
 
@@ -108,7 +108,7 @@ const Contact = () => {
     }
 
     localStorage.setItem(COOLDOWN_KEY, String(Date.now()));
-    toast.success("Message sent — we'll be in touch shortly.");
+    toast.success("Message sent - we'll be in touch shortly.");
     setForm({ name: "", email: "", phone: "", message: "" });
     setConsent(false);
   };
@@ -170,7 +170,7 @@ const Contact = () => {
                 className="w-full bg-transparent border-b border-border py-3 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary transition-colors resize-none"
               />
             </div>
-            {/* Honeypot — hidden from humans, bots fill it in */}
+            {/* Honeypot - hidden from humans, bots fill it in */}
             <div className="absolute -left-[9999px] top-auto w-px h-px overflow-hidden" aria-hidden="true">
               <label htmlFor="bc-company-website">Company website</label>
               <input
@@ -240,7 +240,7 @@ const Contact = () => {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Bridge Craft Engineers & Consultants — Chennai head office location"
+                title="Bridge Craft Engineers & Consultants - Chennai head office location"
               />
             </div>
 
