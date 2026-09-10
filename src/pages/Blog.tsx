@@ -22,7 +22,7 @@ export const formatDate = (value?: string) =>
     : "";
 
 const Blog = () => {
-  const { data, loading } = useSanity<BlogListItem[]>("blogIndex", blogIndexQuery);
+  const { data, isLoading: loading } = useSanity<BlogListItem[]>("blogIndex", blogIndexQuery);
   const posts = data ?? [];
 
   return (

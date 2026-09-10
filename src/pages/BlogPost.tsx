@@ -47,7 +47,7 @@ const components: PortableTextComponents = {
 
 const BlogPost = () => {
   const { slug } = useParams();
-  const { data: post, loading } = useSanity<Post>(`blogPost:${slug}`, blogPostQuery, { slug });
+  const { data: post, isLoading: loading } = useSanity<Post>(`blogPost:${slug}`, blogPostQuery, { slug });
 
   return (
     <Layout>
