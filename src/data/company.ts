@@ -8,7 +8,7 @@ import { bcAssets } from "@/assets/bc";
 export const company = {
   name: "Bridge Craft Engineers & Consultants",
   shortName: "BRIDGE CRAFT",
-  tagline: "ENGINEERS AND CONSULTANT",
+  tagline: "ENGINEERS AND CONSULTANTS",
   descriptor: "CIVIL & INFRASTRUCTURE DESIGN CONSULTANCY",
   strapline: "From Ground Investigation to Structural Excellence",
   address:
