@@ -137,7 +137,10 @@ Deno.serve(async (req) => {
                 consentText: CONSENT_TEXT,
                 status: "new",
                 submittedAt: new Date().toISOString(),
-                source: "website",
+                source: (typeof body?.source === "string" ? body.source : "")
+                  .trim()
+                  .slice(0, 40)
+                  .replace(/[^a-zA-Z0-9 _-]/g, "") || "website",
               },
             },
           ],
