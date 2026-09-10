@@ -116,6 +116,30 @@ const Index = () => {
         </div>
       </section>
 
+      {/* STATS STRIP */}
+      <section className="py-16 border-b border-border reveal">
+        <div className="container-narrow text-center">
+          <p className="text-muted-foreground text-sm md:text-base mb-10">
+            Growing rapidly through proven project experience since 2024
+          </p>
+          <div className="grid sm:grid-cols-3 gap-8 md:gap-12">
+            {(data?.stats ?? [
+              { value: "15+", label: "Project Assignments" },
+              { value: "200+", label: "Boreholes Investigated" },
+              { value: "10+", label: "Project Locations Across India" },
+            ]).map((stat, i) => (
+              <div key={i} className="text-center">
+                <div className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-primary mb-2">
+                  {stat.value}
+                </div>
+                <div className="text-muted-foreground text-sm md:text-base tracking-wide">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* ABOUT */}
       <section className="section-padding reveal">
