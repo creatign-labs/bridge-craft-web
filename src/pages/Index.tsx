@@ -23,6 +23,7 @@ type Homepage = {
   heroPrimaryCta?: { label?: string; href?: string };
   heroSecondaryCta?: { label?: string; href?: string };
   stats?: { value: string; label: string }[];
+  homeStats?: { intro?: string; stats?: { value: string; label: string }[] };
   aboutEyebrow?: string;
   aboutHeadline?: string;
   aboutHeadlineAccent?: string;
