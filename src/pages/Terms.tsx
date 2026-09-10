@@ -6,7 +6,7 @@ const sections = [
   { title: "Use of Website", content: "You may use this website for lawful purposes only. You must not use this website in any way that causes, or may cause, damage to the website or impairment of its availability. You must not use this website to copy, store, or transmit any material that consists of or is linked to any spyware, malware, or other malicious software." },
   { title: "Limitation of Liability", content: "Bridge Craft Engineers & Consultants shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of, or inability to use, this website or any content therein." },
   { title: "Governing Law", content: "These terms shall be governed by and construed in accordance with the laws of India. Any disputes shall be subject to the exclusive jurisdiction of the courts of Chennai, Tamil Nadu." },
-  { title: "Contact", content: "For questions regarding these Terms and Conditions, contact us at: 124/1, 2nd Floor, Heera Panna Complex, G N Chetty Road, T Nagar, Chennai 600017, or call +91 44 49793337." },
+  { title: "Contact", content: "For questions regarding these Terms and Conditions, contact us at: 3rd Floor, Parsn Manere, 'C' Wing, New No.442, Anna Salai, Mount Road, Chennai – 600006, or call +91 9445435322." },
 ];
 
 const Terms = () => (

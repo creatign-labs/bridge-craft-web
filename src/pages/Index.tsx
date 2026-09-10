@@ -10,9 +10,7 @@ import {
   introParagraphs,
   services as companyServices,
   projects as companyProjects,
-  stats as companyStats,
   sectors as companySectors,
-  values as companyValues,
   whyChooseUs,
 } from "@/data/company";
 
@@ -55,11 +53,9 @@ const featuredProjectFallback = companyProjects.slice(0, 4);
 const Index = () => {
   const { data } = useSanity<Homepage>("homepage", homepageQuery);
 
-  const stats = data?.stats?.length ? data.stats : companyStats;
   const services = data?.featuredServices?.length ? data.featuredServices : companyServices;
   const strengths = data?.strengths?.length ? data.strengths : whyChooseUs.slice(0, 4);
   const sectors = data?.sectors?.length ? data.sectors : companySectors;
-  const values = data?.aboutValues?.length ? data.aboutValues : companyValues.map((v) => v.title).slice(0, 3);
 
   const projects = data?.featuredProjects?.length
     ? data.featuredProjects.map((p, i) => ({
@@ -120,17 +116,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* STATS */}
-      <section className="border-y border-border bg-card/30 reveal">
-        <div className="container-narrow px-6 sm:px-8 lg:px-16 grid grid-cols-2 md:grid-cols-4 divide-x divide-border">
-          {stats.map((s, i) => (
-            <div key={i} className="py-10 px-4 md:px-8 first:pl-0">
-              <div className="display-heading text-3xl md:text-5xl text-primary">{s.value}</div>
-              <div className="mt-2 font-mono text-xs uppercase tracking-[0.15em] text-muted-foreground">{s.label}</div>
-            </div>
-          ))}
-        </div>
-      </section>
 
       {/* ABOUT */}
       <section className="section-padding reveal">
@@ -144,14 +129,6 @@ const Index = () => {
             <p className="text-muted-foreground mt-8 leading-relaxed max-w-lg whitespace-pre-line">
               {data?.aboutBody || introParagraphs[0]}
             </p>
-            <div className="grid grid-cols-3 gap-6 mt-10 pt-10 border-t border-border">
-              {values.map((v, i) => (
-                <div key={i}>
-                  <div className="font-mono text-xs text-muted-foreground uppercase tracking-widest">0{i + 1}</div>
-                  <div className="font-heading font-bold mt-2 text-lg">{v}</div>
-                </div>
-              ))}
-            </div>
             <div className="mt-10 flex flex-wrap items-center gap-6">
               <Link to={data?.aboutCtaHref || "/about"} className="inline-flex items-center gap-2 text-primary font-semibold group">
                 {data?.aboutCtaLabel || "Learn more about us"} <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
