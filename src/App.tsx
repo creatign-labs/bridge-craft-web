@@ -12,6 +12,8 @@ import Projects from "./pages/Projects";
 import Services from "./pages/Services";
 import Credentials from "./pages/Credentials";
 import Gallery from "./pages/Gallery";
+import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 import Contact from "./pages/Contact";
 import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
@@ -40,6 +42,8 @@ const AppRoutes = () => (
       <Route path="/services" element={<Services />} />
       <Route path="/credentials" element={<Credentials />} />
       <Route path="/gallery" element={<Gallery />} />
+      <Route path="/blog" element={<Blog />} />
+      <Route path="/blog/:slug" element={<BlogPost />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/terms" element={<Terms />} />
       <Route path="/privacy" element={<Privacy />} />

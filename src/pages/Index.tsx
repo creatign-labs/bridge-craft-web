@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, ArrowUpRight, ChevronDown, Download, Compass, Building2, HardHat, Waves } from "lucide-react";
 import Layout from "@/components/Layout";
+import ContactForm from "@/components/ContactForm";
 import { useSanity } from "@/hooks/use-sanity";
 import { homepageQuery, imageUrl, getIcon } from "@/lib/sanity";
 import type { LucideIcon } from "lucide-react";
@@ -284,6 +285,30 @@ const Index = () => {
               );
             })}
           </div>
+        </div>
+      </section>
+
+      {/* CONTACT */}
+      <section className="section-padding border-b border-border reveal">
+        <div className="container-narrow grid lg:grid-cols-12 gap-10 items-start">
+          <div className="lg:col-span-5">
+            <div className="eyebrow mb-6">Enquiries</div>
+            <h2 className="display-heading text-4xl md:text-5xl lg:text-6xl">
+              Tell us about<br /><span className="text-primary">your project.</span>
+            </h2>
+            <p className="mt-6 text-muted-foreground leading-relaxed max-w-md">
+              Share a few details and our engineering team will get back to you within 24 hours.
+            </p>
+            <div className="mt-8 space-y-3 text-sm">
+              <a href={`tel:${company.phone.replace(/\s/g, "")}`} className="block text-foreground/80 hover:text-primary transition-colors">
+                {company.phone}
+              </a>
+              <a href={`mailto:${company.email}`} className="block text-foreground/80 hover:text-primary transition-colors">
+                {company.email}
+              </a>
+            </div>
+          </div>
+          <ContactForm className="lg:col-span-7" source="homepage" />
         </div>
       </section>
 

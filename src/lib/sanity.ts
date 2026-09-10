@@ -121,3 +121,16 @@ export const contactPageQuery = `*[_type == "contactPage"][0]{
   formHeading, formSubheading, submitLabel, externalFormUrl, externalFormLabel,
   address, phone, email, hours, mapEmbedUrl
 }`;
+
+export const blogIndexQuery = `*[_type == "blogPost" && defined(slug.current)] | order(coalesce(publishedAt, _createdAt) desc){
+  _id, title, "slug": slug.current, excerpt, coverImage, categories,
+  "publishedAt": coalesce(publishedAt, _createdAt),
+  "authorName": author->name
+}`;
+
+export const blogPostQuery = `*[_type == "blogPost" && slug.current == $slug][0]{
+  _id, title, excerpt, coverImage, categories, body, seo,
+  "publishedAt": coalesce(publishedAt, _createdAt),
+  "authorName": author->name,
+  "authorRole": author->role
+}`;
