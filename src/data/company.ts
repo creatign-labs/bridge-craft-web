@@ -8,7 +8,7 @@ import { bcAssets } from "@/assets/bc";
 export const company = {
   name: "Bridge Craft Engineers & Consultants",
   shortName: "BRIDGE CRAFT",
-  tagline: "Civil & Infrastructure Design Consultancy",
+  tagline: "ENGINEERS AND CONSULTANT",
   strapline: "From Ground Investigation to Structural Excellence",
   address:
     "Flat No.8, 3rd Floor, Parsn Manere, 'C' Wing, New No.442, Anna Salai, Mount Road, Chennai – 600006",
