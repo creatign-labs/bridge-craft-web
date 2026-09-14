@@ -1,6 +1,8 @@
 // Real Bridge Craft photography & documents extracted from the 2026 Company Profile.
 import logoMark from "./logo-mark.png";
 import logoMarkDark from "./logo-mark-dark.png";
+import extendedLogo from "../brand/bridgecraft-extended-logo.png.asset.json";
+import extendedLogoDark from "../brand/bridgecraft-extended-logo-dark.png.asset.json";
 import marineBridgeSite from "./marine-bridge-site.jpg";
 import marineGeotechTeam from "./marine-geotech-team.jpg";
 import bridgeCrossSection from "./bridge-cross-section.jpg";
@@ -22,6 +24,8 @@ import retrofitFootingLayout from "./retrofit-footing-layout.jpg";
 export const bcAssets = {
   logoMark,
   logoMarkDark,
+  extendedLogo: extendedLogo.url,
+  extendedLogoDark: extendedLogoDark.url,
   companyProfile: "/downloads/Bridge-Craft-Company-Profile-2026.pdf",
   marineBridgeSite,
   marineGeotechTeam,
