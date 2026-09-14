@@ -3,14 +3,12 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 import { useSanity } from "@/hooks/use-sanity";
-import { navigationQuery, siteSettingsQuery } from "@/lib/sanity";
+import { navigationQuery } from "@/lib/sanity";
 import { bcAssets } from "@/assets/bc";
 import { company } from "@/data/company";
 
 type NavItem = { label: string; href: string };
 type NavData = { label?: string; items?: NavItem[]; ctaLabel?: string; ctaHref?: string };
-type SiteData = { shortName?: string; tagline?: string; logoInitials?: string };
-
 const fallbackNav: NavItem[] = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
@@ -29,13 +27,9 @@ const Navbar = () => {
   const location = useLocation();
 
   const { data: nav } = useSanity<NavData>("navigation", navigationQuery);
-  const { data: site } = useSanity<SiteData>("siteSettings", siteSettingsQuery);
-
   const items = nav?.items?.length ? nav.items : fallbackNav;
   const ctaLabel = nav?.ctaLabel || "Contact us";
   const ctaHref = nav?.ctaHref || "/contact";
-  const shortName = site?.shortName || company.shortName;
-  const tagline = site?.tagline || company.tagline;
 
 
   useEffect(() => {
@@ -52,28 +46,18 @@ const Navbar = () => {
       }`}
     >
       <div className="container-narrow flex items-center justify-between h-20 px-6 sm:px-8 lg:px-16">
-        <Link to="/" className="flex items-center gap-3 group">
+        <Link to="/" className="group shrink-0" aria-label={`${company.name} home`}>
           <img
-            src={bcAssets.logoMark}
+            src={bcAssets.extendedLogoDark}
             alt={`${company.name} logo`}
-            className="h-8 w-auto hidden dark:block transition-transform group-hover:scale-105"
+            className="hidden h-auto w-[176px] sm:w-[220px] dark:block transition-transform group-hover:scale-[1.02]"
           />
           <img
-            src={bcAssets.logoMarkDark}
+            src={bcAssets.extendedLogo}
             alt=""
             aria-hidden="true"
-            className="h-8 w-auto dark:hidden transition-transform group-hover:scale-105"
+            className="h-auto w-[176px] sm:w-[220px] dark:hidden transition-transform group-hover:scale-[1.02]"
           />
-          <div className="leading-tight max-w-[150px] sm:max-w-none">
-            <div className="font-heading font-bold text-foreground text-[10px] sm:text-sm tracking-tight uppercase">
-              {shortName} {tagline}
-            </div>
-            <div className="hidden sm:block font-mono text-[9px] text-muted-foreground uppercase tracking-[0.18em] mt-0.5">
-              {company.descriptor}
-            </div>
-          </div>
-
-
         </Link>
 
 
