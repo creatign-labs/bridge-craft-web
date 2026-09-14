@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { PortableText, type PortableTextComponents } from "@portabletext/react";
+import type { PortableTextBlock } from "@portabletext/types";
 import Layout from "@/components/Layout";
 import { useSanity } from "@/hooks/use-sanity";
 import { blogPostQuery, imageUrl } from "@/lib/sanity";
@@ -15,7 +16,7 @@ type Post = {
   categories?: string[];
   authorName?: string;
   authorRole?: string;
-  body?: unknown[];
+  body?: PortableTextBlock[];
 };
 
 const components: PortableTextComponents = {
