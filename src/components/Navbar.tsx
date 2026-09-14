@@ -61,7 +61,7 @@ const Navbar = () => {
         </Link>
 
 
-        <div className="hidden lg:flex items-center gap-1">
+        <div className="hidden xl:flex items-center gap-1">
           {items.map((link) => (
             <Link
               key={link.href}
@@ -79,12 +79,12 @@ const Navbar = () => {
 
         <div className="flex items-center gap-3">
           <ThemeToggle />
-          <Link to={ctaHref} className="hidden sm:inline-flex btn-primary">
+          <Link to={ctaHref} className="hidden xl:inline-flex btn-primary">
             {ctaLabel} <ArrowUpRight size={16} />
           </Link>
           <button
             onClick={() => setOpen(!open)}
-            className="lg:hidden w-10 h-10 rounded-full border border-border flex items-center justify-center"
+            className="xl:hidden w-10 h-10 rounded-full border border-border flex items-center justify-center"
           >
             {open ? <X size={18} /> : <Menu size={18} />}
           </button>
@@ -92,7 +92,7 @@ const Navbar = () => {
       </div>
 
       {open && (
-        <div className="lg:hidden bg-background/95 backdrop-blur-xl border-b border-border animate-fade-in">
+        <div className="xl:hidden bg-background/95 backdrop-blur-xl border-b border-border animate-fade-in">
           <div className="px-6 py-6 space-y-1">
             {items.map((link) => (
               <Link
