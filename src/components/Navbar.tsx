@@ -79,7 +79,7 @@ const Navbar = () => {
 
         <div className="flex items-center gap-3">
           <ThemeToggle />
-          <Link to={ctaHref} className="hidden xl:inline-flex btn-primary">
+          <Link to={ctaHref} className="hidden xl:inline-flex btn-primary px-8">
             {ctaLabel} <ArrowUpRight size={16} />
           </Link>
           <button

@@ -56,7 +56,7 @@ const Index = () => {
   const { data } = useSanity<Homepage>("homepage", homepageQuery);
 
   const services = data?.featuredServices?.length ? data.featuredServices : companyServices;
-  const strengths = data?.strengths?.length ? data.strengths : whyChooseUs.slice(0, 4);
+  const strengths = data?.strengths?.length ? data.strengths : whyChooseUs;
   const sectors = data?.sectors?.length ? data.sectors : companySectors;
 
   const projects = data?.featuredProjects?.length
@@ -102,7 +102,7 @@ const Index = () => {
               <Link to={data?.heroPrimaryCta?.href || "/services"} className="btn-primary">
                 {data?.heroPrimaryCta?.label || "Explore services"} <ArrowUpRight size={16} />
               </Link>
-              <a href={company.profileUrl} download className="btn-ghost">
+              <a href={company.profileUrl} download="Bridge-Craft-Company-Profile-2026.pdf" className="btn-ghost">
                 Download Company Profile <Download size={16} />
               </a>
               <Link to="/contact" className="btn-ghost">
@@ -127,7 +127,6 @@ const Index = () => {
           <div className="grid sm:grid-cols-3 gap-8 md:gap-12">
             {(data?.homeStats?.stats?.length ? data.homeStats.stats : data?.stats ?? [
               { value: "15+", label: "Project Assignments" },
-              { value: "200+", label: "Boreholes Investigated" },
               { value: "10+", label: "Project Locations Across India" },
             ]).map((stat, i) => (
               <div key={i} className="text-center">
@@ -267,7 +266,7 @@ const Index = () => {
             </h2>
           </div>
 
-          <div className="grid sm:grid-cols-2 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {strengths.map((s, i) => {
               const Icon = getIcon(s.icon);
               return (

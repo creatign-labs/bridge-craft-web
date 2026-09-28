@@ -112,12 +112,12 @@ export const strategyPillars = [
 ];
 
 export const whyChooseUs = [
-  { icon: "Anchor", title: "Marine & Infrastructure Expertise", description: "Proven capability on marine bridges and national highway corridors in island and coastal terrain." },
-  { icon: "Layers", title: "Integrated Services", description: "Structural, Geotechnical and Geophysical engineering delivered by a single accountable team." },
-  { icon: "HardHat", title: "Execution-Focused Design", description: "Designs are shaped by field realities so they can actually be built, safely and on schedule." },
-  { icon: "Gauge", title: "Cost-Effective & Optimized", description: "Value engineering and economically optimized structural solutions on every assignment." },
-  { icon: "Mountain", title: "Challenging Site Conditions", description: "Creek, marine, riverbed and remote-island investigations executed with specialist rigs." },
-  { icon: "CheckCircle2", title: "Reliable Project Delivery", description: "Consistent deliverables, transparent communication and ownership of project outcomes." },
+  { icon: "Anchor", title: "Expertise in marine and infrastructure projects", description: "Proven engineering capability across complex marine and infrastructure assignments." },
+  { icon: "Layers", title: "Integrated services: Structural, Geotechnical & Geophysical", description: "Coordinated multidisciplinary expertise delivered by a single accountable team." },
+  { icon: "HardHat", title: "Execution-focused design approach", description: "Practical engineering solutions shaped by real site and construction conditions." },
+  { icon: "Gauge", title: "Cost-effective and optimized solutions", description: "Value-led designs that balance technical performance, safety, and economy." },
+  { icon: "Mountain", title: "Capability in challenging site conditions", description: "Field experience across marine, creek, riverbed, and remote locations." },
+  { icon: "CheckCircle2", title: "Reliable project delivery", description: "Consistent deliverables, transparent communication, and accountable execution." },
 ];
 
 export const teamStatement = [

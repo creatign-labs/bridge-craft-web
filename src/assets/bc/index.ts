@@ -3,6 +3,7 @@ import logoMark from "./logo-mark.png";
 import logoMarkDark from "./logo-mark-dark.png";
 import extendedLogo from "../brand/bridgecraft-extended-logo.png.asset.json";
 import extendedLogoDark from "../brand/bridgecraft-extended-logo-dark.png.asset.json";
+import companyProfile from "../documents/bridge-craft-company-profile-2026.pdf.asset.json";
 import marineBridgeSite from "./marine-bridge-site.jpg";
 import marineGeotechTeam from "./marine-geotech-team.jpg";
 import bridgeCrossSection from "./bridge-cross-section.jpg";
@@ -26,7 +27,7 @@ export const bcAssets = {
   logoMarkDark,
   extendedLogo: extendedLogo.url,
   extendedLogoDark: extendedLogoDark.url,
-  companyProfile: "/downloads/Bridge-Craft-Company-Profile-2026.pdf",
+  companyProfile: companyProfile.url,
   marineBridgeSite,
   marineGeotechTeam,
   bridgeCrossSection,
