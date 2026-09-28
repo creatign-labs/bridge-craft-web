@@ -124,7 +124,7 @@ const Index = () => {
           <p className="text-muted-foreground text-sm md:text-base mb-10">
             {data?.homeStats?.intro ?? "Growing rapidly through proven project experience since 2024"}
           </p>
-          <div className="grid sm:grid-cols-3 gap-8 md:gap-12">
+          <div className="grid sm:grid-cols-2 gap-8 md:gap-12">
             {(data?.homeStats?.stats?.length ? data.homeStats.stats : data?.stats ?? [
               { value: "15+", label: "Project Assignments" },
               { value: "10+", label: "Project Locations Across India" },
@@ -261,8 +261,8 @@ const Index = () => {
           <div className="max-w-3xl mb-16">
             <div className="eyebrow mb-6">{data?.whyEyebrow || "Why Bridge Craft"}</div>
             <h2 className="display-heading text-4xl md:text-5xl lg:text-6xl">
-              {data?.whyHeadline || "Rigor meets"}<br />
-              <span className="text-primary">{data?.whyHeadlineAccent || "field reality."}</span>
+              {data?.whyHeadline || "Why choose"}<br />
+              <span className="text-primary">{data?.whyHeadlineAccent || "us."}</span>
             </h2>
           </div>
 
