@@ -18,7 +18,7 @@ const Credentials = () => (
           retrofitting - each credential below is evidenced by executed Bridge Craft assignments.
         </p>
         <div className="mt-10 flex flex-wrap gap-4 animate-fade-in-up animation-delay-300">
-          <a href={company.profileUrl} download className="btn-primary">
+          <a href={company.profileUrl} download="Bridge-Craft-Company-Profile-2026.pdf" className="btn-primary">
             Download Company Profile <Download size={16} />
           </a>
         </div>
@@ -74,7 +74,7 @@ const Credentials = () => (
           Download our <span className="text-primary">credentials.</span>
         </h2>
         <div className="mt-8 flex flex-wrap gap-4">
-          <a href={company.profileUrl} download className="btn-primary">
+          <a href={company.profileUrl} download="Bridge-Craft-Company-Profile-2026.pdf" className="btn-primary">
             Company Profile 2026 (PDF) <Download size={16} />
           </a>
           <span className="inline-flex items-center gap-2 rounded-full border border-dashed border-border px-5 py-3 text-sm text-muted-foreground">
